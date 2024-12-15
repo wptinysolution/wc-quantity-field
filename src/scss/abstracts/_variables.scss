@@ -1,0 +1,19 @@
+//-------------------- Common Variables --------------------//
+$text_color: #333;
+$color_white: #fff;
+$color_offset: #f1f1f1;
+
+//-------------------- Frontend Variables --------------------//
+$xlg_screen: 1200px !default;
+$lg_screen: 1025px !default;
+$md_screen: 992px !default;
+$sm_screen: 768px !default;
+$vsm_screen: 576px !default;
+
+$screen-breakpoints: (
+	"ultra": $xlg_screen,
+	"wide": $lg_screen,
+	"notebook": $md_screen,
+	"tablet": $sm_screen,
+	"mobile": $vsm_screen
+);

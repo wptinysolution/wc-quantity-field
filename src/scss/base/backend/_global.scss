@@ -1,0 +1,23 @@
+/* ===========================
+	Global Backend CSS
+=============================*/
+
+.d-flex {
+	@extend %d-flex;
+}
+
+.flex-wrap {
+	@extend %flex-wrap;
+}
+
+.justify-content-center {
+	@extend %justify-content-center;
+}
+
+.align-items-center {
+	@extend %align-items-center;
+}
+
+.flex-center {
+	@extend %flex-center;
+}

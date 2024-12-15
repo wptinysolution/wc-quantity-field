@@ -1,0 +1,15 @@
+{
+  "name": "tinysolutions/wp-plugin-wp_quantity_field-react-with-mix",
+  "authors": [
+    {
+      "name": "TinySolutions",
+      "email": "wptinysolution@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TinySolutions\\wp_quantity_field\\": "main"
+    }
+  },
+  "description": ""
+}

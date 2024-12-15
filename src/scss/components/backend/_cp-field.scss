@@ -1,0 +1,42 @@
+/* ===========================
+	Component: Fields
+=============================*/
+
+.wp-fields {
+	text-align: center;
+}
+.field-option-wrapper{
+	//border: 5px solid #ddd;
+	.field-wrapper{
+		align-items: center;
+		padding-left: 20px;
+		border: 1px solid rgb(226 232 240 / 1);
+		margin-left: -1px;
+		flex: 1;
+		margin-bottom: 0;
+		&.switch{
+			flex: 1;
+			.field-label-wrapper{}
+			.field-wrapper-child{
+				flex: 1;
+			}
+		}
+	}
+	.field-label-wrapper{
+		margin: 0;
+		flex: 1;
+		font-weight: 700;
+		//position: absolute;
+	}
+	.field-wrapper-child{
+		border: 0;
+		padding: 10px;
+		flex: auto;
+	}
+	
+	.option-field-switch{
+		.field-label-wrapper{
+		
+		}
+	}
+}

@@ -1,0 +1,16 @@
+//-------------------- Responsive --------------------//
+// Possible $type Values: min, max
+// Usage @include media-only(mobile, max);
+
+@mixin media-only($width, $type: min) {
+	@if map_has_key($merryll-breakpoints, $width) {
+		$width: map_get($merryll-breakpoints, $width);
+	}
+
+	@if $type == max {
+		$width: $width - 1px;
+	}
+	@media only screen and (#{$type}-width: $width) {
+		@content;
+	}
+}
