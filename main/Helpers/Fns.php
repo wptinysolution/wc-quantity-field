@@ -48,7 +48,7 @@ class Fns {
 	 */
 	public static function get_options() {
 		$defaults = [];
-		$options  = get_option( 'ancenter_settings' );
+		$options  = get_option( 'wcqf_settings' );
 		return wp_parse_args( $options, $defaults );
 	}
 

@@ -44,7 +44,7 @@ class AdminFilter {
 	 * @return array [array] plugin action link
 	 */
 	public function plugins_setting_links( $links ) {
-		$links['cancenter_settings'] = '<a href="' . admin_url( 'admin.php?page=wcqf-admin' ) . '">' . esc_html__( 'Settings', 'wc-quantity-field' ) . '</a>';
+		$links['wcqf_settings'] = '<a href="' . admin_url( 'admin.php?page=wcqf-admin' ) . '">' . esc_html__( 'Settings', 'wc-quantity-field' ) . '</a>';
 		return $links;
 	}
 	/**

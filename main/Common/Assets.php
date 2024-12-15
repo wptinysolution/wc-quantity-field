@@ -107,7 +107,7 @@ class Assets {
 
 			wp_localize_script(
 				'wcqf-settings',
-				'ancenterParams',
+				'wcqfParams',
 				[
 					'ajaxUrl'                   => esc_url( admin_url( 'admin-ajax.php' ) ),
 					'adminUrl'                  => esc_url( admin_url() ),

@@ -4,7 +4,7 @@
 import Axios from 'axios';
 import TheAlerts from "@/components/CustomizeComponent/TheAlerts";
 
-const apiBaseUrl = `${ancenterParams.restApiUrl}TinySolutions/ancenter/v1/api`;
+const apiBaseUrl = `${wcqfParams.restApiUrl}TinySolutions/wcqf/v1/api`;
 
 /*
  * Create a Api object with Axios and
@@ -13,7 +13,7 @@ const apiBaseUrl = `${ancenterParams.restApiUrl}TinySolutions/ancenter/v1/api`;
 const Api = Axios.create({
     baseURL: apiBaseUrl,
     headers: {
-        'X-WP-Nonce': ancenterParams.rest_nonce
+        'X-WP-Nonce': wcqfParams.rest_nonce
     }
 });
 

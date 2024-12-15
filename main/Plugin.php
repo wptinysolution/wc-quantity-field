@@ -38,7 +38,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 */
-	public $nonceId = 'ancenter_wpnonce';
+	public $nonceId = 'wcqf_wpnonce';
 
 	/**
 	 * Post Type.
@@ -51,7 +51,7 @@ final class Plugin {
 	 *
 	 * @var string
 	 */
-	public $category = 'ancenter_category';
+	public $category = 'wcqf_category';
 	/**
 	 * Singleton
 	 */
@@ -96,7 +96,7 @@ final class Plugin {
 	 * @return string
 	 */
 	public function get_template_path() {
-		return apply_filters( 'ancenter_template_path', 'templates/' );
+		return apply_filters( 'wcqf_template_path', 'templates/' );
 	}
 
 	/**
@@ -121,7 +121,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function init() {
-		do_action( 'ancenter/before_init' );
+		do_action( 'wcqf/before_init' );
 		Ninjagallery::instance();
 		Review::instance();
 		// Include File.
@@ -129,7 +129,7 @@ final class Plugin {
 		AdminMenu::instance();
 		MainHooks::instance();
 		Api::instance();
-		do_action( 'ancenter/after_init' );
+		do_action( 'wcqf/after_init' );
 	}
 
 	/**
@@ -138,7 +138,7 @@ final class Plugin {
 	 * @return boolean
 	 */
 	public function has_pro() {
-		return function_exists( 'ancenterp' );
+		return function_exists( 'wcqfp' );
 	}
 
 	/**
@@ -156,7 +156,7 @@ final class Plugin {
 	private function run() {
 		if ( Dependencies::instance()->check() ) {
             $this->init();
-			do_action( 'ancenter/after_run' );
+			do_action( 'wcqf/after_run' );
 		}
 		$this->loader->run();
 	}

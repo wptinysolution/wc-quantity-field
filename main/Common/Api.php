@@ -24,9 +24,9 @@ class Api {
 	/**
 	 * @var string
 	 */
-	private $namespacev1 = 'TinySolutions/ancenter/v1';
+	private $namespacev1 = 'TinySolutions/wcqf/v1';
 
-	/**TinySolutions/ancenter/v1/updateOptions
+	/**TinySolutions/wcqf/v1/updateOptions
 	 * @var string
 	 */
 	private $resource_name = '/api';
@@ -145,13 +145,13 @@ class Api {
 
 		$parameters = $request_data->get_params();
 
-		$the_settings = get_option( 'ancenter_settings', [] );
+		$the_settings = get_option( 'wcqf_settings', [] );
 		
 		if ( isset( $parameters['allGroups'] ) && is_array( $parameters['allGroups'] ) ) {
 			$the_settings['allGroups'] = $parameters['allGroups'];
 		}
 		
-		$options = update_option( 'ancenter_settings', $the_settings );
+		$options = update_option( 'wcqf_settings', $the_settings );
 
 		$result['updated'] = boolval( $options );
 	
