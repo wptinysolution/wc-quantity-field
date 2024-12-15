@@ -34,17 +34,6 @@ function PageMasterComponent({ children } ) {
                     <Button
                         variant="outline"
                         onClick={ async () => {
-                            await setAddNewButtonLoading( true );
-                            await addNewGroup()
-                            await setTimeout(()=> setAddNewButtonLoading( false ), 200 )
-                        } }
-                        className="text-white hover:text-white h-12 w-48 px-3 py-3 bg-sky-500 border-sky-500"
-                    >
-                        {isAddNewButtonLoading ? <AnimateSpain/> : 'Add New Group'}
-                    </Button>
-                    <Button
-                        variant="outline"
-                        onClick={ async () => {
                             await setButtonLoading( true );
                             await saveSettings();
                             await setTimeout(()=> setButtonLoading( false ), 200 )

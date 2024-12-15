@@ -14,13 +14,7 @@ function MainHeader() {
                         URL='/'
                         NavigationClass={''}
                         LinkClass={''}
-                        Text='Product Bundle'
-                    />
-                    <MenuLink
-                        URL='/page'
-                        NavigationClass={''}
-                        LinkClass={''}
-                        Text='Product Bundle'
+                        Text='Settings'
                     />
                 </NavigationMenuList>
             </NavigationMenu>

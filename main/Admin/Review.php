@@ -24,7 +24,7 @@ class Review {
 	 *
 	 * @var string
 	 */
-	public string $textdomain = 'ancenter';
+	public string $textdomain = 'wc-quantity-field';
 
 	/**
 	 * Init
@@ -33,8 +33,8 @@ class Review {
 	 */
 	private function __construct() {
 		$this->loader = Loader::instance();
-		$this->loader->add_action( 'admin_init', $this, 'ancenter_check_installation_time' );
-		$this->loader->add_action( 'admin_init', $this, 'ancenter_spare_me', 5 );
+		$this->loader->add_action( 'admin_init', $this, 'wcqf_check_installation_time' );
+		$this->loader->add_action( 'admin_init', $this, 'wcqf_spare_me', 5 );
 		if ( true ) {
 			$this->loader->add_action( 'admin_footer', $this, 'deactivation_popup', 99 ); // Remove the hooks if no longer need.
 		}
@@ -45,12 +45,12 @@ class Review {
 	 *
 	 * @return void
 	 */
-	public function ancenter_check_installation_time() {
+	public function wcqf_check_installation_time() {
 
 		// Added Lines Start
-		$nobug = get_option( 'ancenter_spare_me' );
+		$nobug = get_option( 'wcqf_spare_me' );
 
-		$rated = get_option( 'ancenter_rated' );
+		$rated = get_option( 'wcqf_rated' );
 
 		if ( '1' == $nobug || 'yes' == $rated ) {
 			return;
@@ -58,11 +58,11 @@ class Review {
 
 		$now = strtotime( 'now' );
 
-		$install_date = get_option( 'ancenter_plugin_activation_time' );
+		$install_date = get_option( 'wcqf_plugin_activation_time' );
 
 		$past_date = strtotime( '+10 days', $install_date );
 
-		$remind_time = get_option( 'ancenter_remind_me' );
+		$remind_time = get_option( 'wcqf_remind_me' );
 
 		if ( ! $remind_time ) {
 			$remind_time = $install_date;
@@ -76,7 +76,7 @@ class Review {
 			return;
 		}
 
-		$this->loader->add_action( 'admin_notices', $this, 'ancenter_display_admin_notice' );
+		$this->loader->add_action( 'admin_notices', $this, 'wcqf_display_admin_notice' );
 	}
 
 	/**
@@ -84,36 +84,36 @@ class Review {
 	 *
 	 * @return void
 	 */
-	public function ancenter_spare_me() {
+	public function wcqf_spare_me() {
 
-		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'ancenter_notice_nonce' ) ) {
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'wcqf_notice_nonce' ) ) {
 			return;
 		}
 
-		if ( isset( $_GET['ancenter_spare_me'] ) && ! empty( $_GET['ancenter_spare_me'] ) ) {
-			$spare_me = absint( $_GET['ancenter_spare_me'] );
+		if ( isset( $_GET['wcqf_spare_me'] ) && ! empty( $_GET['wcqf_spare_me'] ) ) {
+			$spare_me = absint( $_GET['wcqf_spare_me'] );
 			if ( 1 == $spare_me ) {
-				update_option( 'ancenter_spare_me', '1' );
+				update_option( 'wcqf_spare_me', '1' );
 			}
 		}
 
-		if ( isset( $_GET['ancenter_remind_me'] ) && ! empty( $_GET['ancenter_remind_me'] ) ) {
-			$remind_me = absint( $_GET['ancenter_remind_me'] );
+		if ( isset( $_GET['wcqf_remind_me'] ) && ! empty( $_GET['wcqf_remind_me'] ) ) {
+			$remind_me = absint( $_GET['wcqf_remind_me'] );
 			if ( 1 == $remind_me ) {
 				$get_activation_time = strtotime( 'now' );
-				update_option( 'ancenter_remind_me', $get_activation_time );
+				update_option( 'wcqf_remind_me', $get_activation_time );
 			}
 		}
 
-		if ( isset( $_GET['ancenter_rated'] ) && ! empty( $_GET['ancenter_rated'] ) ) {
-			$ancenter_rated = absint( $_GET['ancenter_rated'] );
-			if ( 1 == $ancenter_rated ) {
-				update_option( 'ancenter_rated', 'yes' );
+		if ( isset( $_GET['wcqf_rated'] ) && ! empty( $_GET['wcqf_rated'] ) ) {
+			$wcqf_rated = absint( $_GET['wcqf_rated'] );
+			if ( 1 == $wcqf_rated ) {
+				update_option( 'wcqf_rated', 'yes' );
 			}
 		}
 	}
 
-	protected function ancenter_current_admin_url() {
+	protected function wcqf_current_admin_url() {
 		$uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$uri = preg_replace( '|^.*/wp-admin/|i', '', $uri );
 
@@ -128,9 +128,9 @@ class Review {
 				'wc_db_update',
 				'wc_db_update_nonce',
 				'wc-hide-notice',
-				'ancenter_spare_me',
-				'ancenter_remind_me',
-				'ancenter_rated',
+				'wcqf_spare_me',
+				'wcqf_remind_me',
+				'wcqf_rated',
 			],
 			admin_url( $uri )
 		);
@@ -139,7 +139,7 @@ class Review {
 	/**
 	 * Display Admin Notice, asking for a review
 	 **/
-	public function ancenter_display_admin_notice() {
+	public function wcqf_display_admin_notice() {
 		// WordPress global variable
 		global $pagenow;
 		$exclude = [
@@ -163,35 +163,35 @@ class Review {
 
 		if ( ! in_array( $pagenow, $exclude ) ) {
 
-			$args = [ '_wpnonce' => wp_create_nonce( 'ancenter_notice_nonce' ) ];
+			$args = [ '_wpnonce' => wp_create_nonce( 'wcqf_notice_nonce' ) ];
 
-			$dont_disturb = add_query_arg( $args + [ 'ancenter_spare_me' => '1' ], $this->ancenter_current_admin_url() );
-			$remind_me    = add_query_arg( $args + [ 'ancenter_remind_me' => '1' ], $this->ancenter_current_admin_url() );
-			$rated        = add_query_arg( $args + [ 'ancenter_rated' => '1' ], $this->ancenter_current_admin_url() );
-			$reviewurl    = 'https://wordpress.org/support/plugin/ancenter/reviews/?filter=5#new-post';
+			$dont_disturb = add_query_arg( $args + [ 'wcqf_spare_me' => '1' ], $this->wcqf_current_admin_url() );
+			$remind_me    = add_query_arg( $args + [ 'wcqf_remind_me' => '1' ], $this->wcqf_current_admin_url() );
+			$rated        = add_query_arg( $args + [ 'wcqf_rated' => '1' ], $this->wcqf_current_admin_url() );
+			$reviewurl    = 'https://wordpress.org/support/plugin/wcqf/reviews/?filter=5#new-post';
 			$plugin_name  = 'Modules For Woocommerce';
 			?>
-			<div class="notice ancenter-review-notice ancenter-review-notice--extended">
-				<div class="ancenter-review-notice_content">
+			<div class="notice wcqf-review-notice wcqf-review-notice--extended">
+				<div class="wcqf-review-notice_content">
 					<h3>Enjoying "<?php echo $plugin_name; ?>"? </h3>
 					<p>Thank you for choosing "<string><?php echo $plugin_name; ?></string>". If you found our plugin useful, please consider giving us a 5-star rating on WordPress.org. Your feedback will motivate us to grow.</p>
-					<div class="ancenter-review-notice_actions">
-						<a href="<?php echo esc_url( $reviewurl ); ?>" class="ancenter-review-button ancenter-review-button--cta" target="_blank"><span>⭐ Yes, You Deserve It!</span></a>
-						<a href="<?php echo esc_url( $rated ); ?>" class="ancenter-review-button ancenter-review-button--cta ancenter-review-button--outline"><span>😀 Already Rated!</span></a>
-						<a href="<?php echo esc_url( $remind_me ); ?>" class="ancenter-review-button ancenter-review-button--cta ancenter-review-button--outline"><span>🔔 Remind Me Later</span></a>
-						<!-- <a href="--><?php // echo esc_url( $dont_disturb ); ?><!--" class="ancenter-review-button ancenter-review-button--cta ancenter-review-button--error ancenter-review-button--outline"><span>😐 No Thanks </span></a>-->
+					<div class="wcqf-review-notice_actions">
+						<a href="<?php echo esc_url( $reviewurl ); ?>" class="wcqf-review-button wcqf-review-button--cta" target="_blank"><span>⭐ Yes, You Deserve It!</span></a>
+						<a href="<?php echo esc_url( $rated ); ?>" class="wcqf-review-button wcqf-review-button--cta wcqf-review-button--outline"><span>😀 Already Rated!</span></a>
+						<a href="<?php echo esc_url( $remind_me ); ?>" class="wcqf-review-button wcqf-review-button--cta wcqf-review-button--outline"><span>🔔 Remind Me Later</span></a>
+						<!-- <a href="--><?php // echo esc_url( $dont_disturb ); ?><!--" class="wcqf-review-button wcqf-review-button--cta wcqf-review-button--error wcqf-review-button--outline"><span>😐 No Thanks </span></a>-->
 					</div>
 				</div>
 			</div>
 			<style>
-				.ancenter-review-button--cta {
+				.wcqf-review-button--cta {
 					--e-button-context-color: #5d3dfd;
 					--e-button-context-color-dark: #5d3dfd;
 					--e-button-context-tint: rgb(75 47 157/4%);
 					--e-focus-color: rgb(75 47 157/40%);
 				}
 
-				.ancenter-review-notice {
+				.wcqf-review-notice {
 					position: relative;
 					margin: 5px 20px 5px 2px;
 					border: 1px solid #ccd0d4;
@@ -201,11 +201,11 @@ class Review {
 					border-inline-start-width: 4px;
 				}
 
-				.ancenter-review-notice.notice {
+				.wcqf-review-notice.notice {
 					padding: 0;
 				}
 
-				.ancenter-review-notice:before {
+				.wcqf-review-notice:before {
 					position: absolute;
 					top: -1px;
 					bottom: -1px;
@@ -217,37 +217,37 @@ class Review {
 					content: "";
 				}
 
-				.ancenter-review-notice_content {
+				.wcqf-review-notice_content {
 					padding: 20px;
 				}
 
-				.ancenter-review-notice_actions > * + * {
+				.wcqf-review-notice_actions > * + * {
 					margin-inline-start: 8px;
 					-webkit-margin-start: 8px;
 					-moz-margin-start: 8px;
 				}
 
-				.ancenter-review-notice p {
+				.wcqf-review-notice p {
 					margin: 0;
 					padding: 0;
 					line-height: 1.5;
 				}
 
-				p + .ancenter-review-notice_actions {
+				p + .wcqf-review-notice_actions {
 					margin-top: 1rem;
 				}
 
-				.ancenter-review-notice h3 {
+				.wcqf-review-notice h3 {
 					margin: 0;
 					font-size: 1.0625rem;
 					line-height: 1.2;
 				}
 
-				.ancenter-review-notice h3 + p {
+				.wcqf-review-notice h3 + p {
 					margin-top: 8px;
 				}
 
-				.ancenter-review-button {
+				.wcqf-review-button {
 					display: inline-block;
 					padding: 0.4375rem 0.75rem;
 					border: 0;
@@ -260,13 +260,13 @@ class Review {
 					white-space: nowrap;
 				}
 
-				.ancenter-review-button:active {
+				.wcqf-review-button:active {
 					background: var(--e-button-context-color-dark);
 					color: #fff;
 					text-decoration: none;
 				}
 
-				.ancenter-review-button:focus {
+				.wcqf-review-button:focus {
 					outline: 0;
 					background: var(--e-button-context-color-dark);
 					box-shadow: 0 0 0 2px var(--e-focus-color);
@@ -274,36 +274,36 @@ class Review {
 					text-decoration: none;
 				}
 
-				.ancenter-review-button:hover {
+				.wcqf-review-button:hover {
 					background: var(--e-button-context-color-dark);
 					color: #fff;
 					text-decoration: none;
 				}
 
-				.ancenter-review-button.focus {
+				.wcqf-review-button.focus {
 					outline: 0;
 					box-shadow: 0 0 0 2px var(--e-focus-color);
 				}
 
-				.ancenter-review-button--error {
+				.wcqf-review-button--error {
 					--e-button-context-color: #682e36;
 					--e-button-context-color-dark: #ae2131;
 					--e-button-context-tint: rgba(215, 43, 63, 0.04);
 					--e-focus-color: rgba(215, 43, 63, 0.4);
 				}
 
-				.ancenter-review-button.ancenter-review-button--outline {
+				.wcqf-review-button.wcqf-review-button--outline {
 					border: 1px solid;
 					background: 0 0;
 					color: var(--e-button-context-color);
 				}
 
-				.ancenter-review-button.ancenter-review-button--outline:focus {
+				.wcqf-review-button.wcqf-review-button--outline:focus {
 					background: var(--e-button-context-tint);
 					color: var(--e-button-context-color-dark);
 				}
 
-				.ancenter-review-button.ancenter-review-button--outline:hover {
+				.wcqf-review-button.wcqf-review-button--outline:hover {
 					background: var(--e-button-context-tint);
 					color: var(--e-button-context-color-dark);
 				}
@@ -518,18 +518,18 @@ class Review {
 				color: #fff;
 			}
 
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-dialog-buttonset{
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-dialog-buttonset{
 				background-color: #fefefe;
 				box-shadow: none;
 				z-index: 99;
 			}
 
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-dialog-buttonpane ,
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-widget-content {
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-dialog-buttonpane ,
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-widget-content {
 				border: 0;
 			}
 
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-resizable-handle {
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-resizable-handle {
 				display: none;
 			}
 
@@ -559,23 +559,23 @@ class Review {
 				z-index: 9;
 				background-color: rgba(0, 0, 0, 0.5);
 			}
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] {
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] {
 				background-color: #fefefe;
 				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				z-index: 99;
 			}
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-dialog-buttonset{
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-dialog-buttonset{
 				background-color: #fefefe;
 				box-shadow: none;
 				z-index: 99;
 			}
 
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-dialog-buttonpane ,
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-widget-content {
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-dialog-buttonpane ,
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-widget-content {
 				border: 0;
 			}
 
-			.ui-dialog[aria-describedby="deactivation-dialog-ancenter"] .ui-resizable-handle {
+			.ui-dialog[aria-describedby="deactivation-dialog-wcqf"] .ui-resizable-handle {
 				display: none !important;
 			}
 
@@ -597,9 +597,9 @@ class Review {
 			jQuery(document).ready(function ($) {
 
 				// Open the deactivation dialog when the 'Deactivate' link is clicked
-				$('.deactivate #deactivate-cpt-ancenter').on('click', function (e) {
+				$('.deactivate #deactivate-cpt-wcqf').on('click', function (e) {
 					e.preventDefault();
-					var href = $('.deactivate #deactivate-cpt-ancenter').attr('href');
+					var href = $('.deactivate #deactivate-cpt-wcqf').attr('href');
 					$('#deactivation-dialog-<?php echo esc_attr( $this->textdomain ); ?> .modal-content input[name="reason_found_a_better_plugin"]').hide();
 					var dialogbox = $('#deactivation-dialog-<?php echo esc_attr( $this->textdomain ); ?>').dialog({
 						modal: true,
@@ -648,7 +648,7 @@ class Review {
 
 				// Submit the feedback
 				function submitFeedback() {
-					var href = $('.deactivate #deactivate-cpt-ancenter').attr('href');
+					var href = $('.deactivate #deactivate-cpt-wcqf').attr('href');
 					var reasons = $('#deactivation-dialog-<?php echo esc_attr( $this->textdomain ); ?> input[type="radio"]:checked').val();
 					var feedback = $('#deactivation-feedback-<?php echo esc_attr( $this->textdomain ); ?>').val();
 					var better_plugin = $('#deactivation-dialog-<?php echo esc_attr( $this->textdomain ); ?> .modal-content input[name="reason_found_a_better_plugin"]').val();
@@ -674,7 +674,7 @@ class Review {
 							reasons: reasons ? reasons : '',
 							better_plugin: better_plugin,
 							feedback: feedback,
-							wpplugin: 'plugin-ancenter',
+							wpplugin: 'plugin-wcqf',
 						},
 						success: function (response) {
 						},

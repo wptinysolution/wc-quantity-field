@@ -1,16 +1,16 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       WC Quantity Field
+ * Plugin Name:       Quantity Field For Woocommerce
  * Plugin URI:        https://wordpress.org/plugins/admin-notice-centralization
  * Description:       Boiler
  * Version:           0.0.2
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/
- * Text Domain:       ancenter
+ * Text Domain:       wc-quantity-field
  * Domain Path:       /languages
- * License:                    GPLv3
- * License URI:                http://www.gnu.org/licenses/gpl-3.0.html
+ * License:           GPLv3
+ * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
  * @package TinySolutions\mlt
  */
 

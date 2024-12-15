@@ -156,7 +156,7 @@ class Api {
 		$result['updated'] = boolval( $options );
 	
 		if ( $result['updated'] ) {
-			$result['message'] = esc_html__( 'Updated.', 'ancenter' );
+			$result['message'] = esc_html__( 'Updated.', 'wc-quantity-field' );
 		}
 		return $result;
 	}

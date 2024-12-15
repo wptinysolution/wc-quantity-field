@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 
-import Bundle from "@/js/backend/Bundle";
-import Page from "@/js/backend/Page";
 import TheAlerts from "@/components/CustomizeComponent/TheAlerts";
 import useStore from "@/js/backend/Utils/StateProvider";
+import Settings from "@/js/backend/Settings";
 
 const App = () => {
     const {
@@ -17,8 +16,7 @@ const App = () => {
         <div className="border border-sky-500 p-1.5 rounded">
             <HashRouter>
                 <Routes>
-                    <Route path="/" element={<Bundle/>}/>
-                    <Route path="/page" element={<Page/>}/>
+                    <Route path="/" element={<Settings/>}/>
                     <Route path="*" element={<Navigate to="/" replace/>}/>
                 </Routes>
             </HashRouter>

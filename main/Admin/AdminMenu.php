@@ -29,7 +29,7 @@ class AdminMenu {
 	/**
 	 * Parent Menu Page Slug
 	 */
-	const MENU_PAGE_SLUG = 'ancenter-admin';
+	const MENU_PAGE_SLUG = 'wcqf-admin';
 	/**
 	 * Menu capability
 	 */
@@ -52,34 +52,35 @@ class AdminMenu {
 	 */
 	public function register_sub_menu() {
 		add_menu_page(
-			'Admin Notice',
-			'Admin Notice',
+			'Quantity Settings',
+			'Quantity Settings',
 			'manage_options',
-			'ancenter-admin',
+			'wcqf-admin',
 			[ $this, 'module_page_callback' ],
 			'dashicons-screenoptions',
 			57
 		);
+		
 		add_submenu_page(
 			self::MENU_PAGE_SLUG,
-			esc_html__( 'Admin Notice', 'ancenter' ),
-			'<span class="ancenter-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Admin Notice', 'ancenter' ) . '</span>',
+			esc_html__( 'Quantity Settings', 'wc-quantity-field' ),
+			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Quantity Settings', 'wc-quantity-field' ) . '</span>',
 			self::MENU_CAPABILITY,
 			self::MENU_PAGE_SLUG,
 		);
-		$menu_link_part = admin_url( 'admin.php?page=ancenter-admin' );
+		$menu_link_part = admin_url( 'admin.php?page=wcqf-admin' );
 
 		add_submenu_page(
 			self::MENU_PAGE_SLUG,
-			esc_html__( 'Useful Plugins', 'ancenter' ),
-			'<span class="ancenter-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Useful Plugins', 'ancenter' ) . '</span>',
+			esc_html__( 'Useful Plugins', 'wc-quantity-field' ),
+			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Useful Plugins', 'wc-quantity-field' ) . '</span>',
 			self::MENU_CAPABILITY,
 			$menu_link_part . '#/plugins'
 		);
 		add_submenu_page(
 			self::MENU_PAGE_SLUG,
-			esc_html__( 'Contacts Support', 'ancenter' ),
-			'<span class="ancenter-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Contacts Support', 'ancenter' ) . '</span>',
+			esc_html__( 'Contacts Support', 'wc-quantity-field' ),
+			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Contacts Support', 'wc-quantity-field' ) . '</span>',
 			self::MENU_CAPABILITY,
 			$menu_link_part . '#/support'
 		);
@@ -91,6 +92,6 @@ class AdminMenu {
 	 * @return void
 	 */
 	public function module_page_callback() {
-		echo '<div class="wrap"><div id="ancenter_root"></div></div>';
+		echo '<div class="wrap"><div id="wcqf_root"></div></div>';
 	}
 }

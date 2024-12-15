@@ -112,7 +112,7 @@ final class Plugin {
 	 * Load Text Domain
 	 */
 	public function language() {
-		load_plugin_textdomain( 'ancenter', false, WC_QUANTITY_FIELD_ABSPATH . '/languages/' );
+		load_plugin_textdomain( 'wc-quantity-field', false, WC_QUANTITY_FIELD_ABSPATH . '/languages/' );
 	}
 
 	/**

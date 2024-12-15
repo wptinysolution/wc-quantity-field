@@ -74,25 +74,25 @@ abstract class CustomPostType {
 		// We set the default labels based on the post type name and plural. We overwrite them with the given labels.
 		$defaults_labels = [
 			/* translators: %s: post-type name */
-			'add_new'            => sprintf( esc_html_x( 'Add New', '%s', 'ancenter' ), strtolower( $name ) ),
+			'add_new'            => sprintf( esc_html_x( 'Add New', '%s', 'wc-quantity-field' ), strtolower( $name ) ),
 			/* translators: %s: post-type name */
-			'add_new_item'       => sprintf( esc_html__( 'Add New %s', 'ancenter' ), $name ),
+			'add_new_item'       => sprintf( esc_html__( 'Add New %s', 'wc-quantity-field' ), $name ),
 			/* translators: %s: post-type name */
-			'edit_item'          => sprintf( esc_html__( 'Edit %s', 'ancenter' ), $name ),
+			'edit_item'          => sprintf( esc_html__( 'Edit %s', 'wc-quantity-field' ), $name ),
 			/* translators: %s: post-type name */
-			'new_item'           => sprintf( esc_html__( 'New %s', 'ancenter' ), $name ),
+			'new_item'           => sprintf( esc_html__( 'New %s', 'wc-quantity-field' ), $name ),
 			/* translators: %s: post-type plural name */
-			'all_items'          => sprintf( esc_html__( 'All %s', 'ancenter' ), $plural ),
+			'all_items'          => sprintf( esc_html__( 'All %s', 'wc-quantity-field' ), $plural ),
 			/* translators: %s: post-type name */
-			'view_item'          => sprintf( esc_html__( 'View %s', 'ancenter' ), $name ),
+			'view_item'          => sprintf( esc_html__( 'View %s', 'wc-quantity-field' ), $name ),
 			/* translators: %s: post-type plural name */
-			'search_items'       => sprintf( esc_html__( 'Search %s', 'ancenter' ), $plural ),
+			'search_items'       => sprintf( esc_html__( 'Search %s', 'wc-quantity-field' ), $plural ),
 			/* translators: %s: post-type plural name */
-			'not_found'          => sprintf( esc_html__( 'No %s found', 'ancenter' ), strtolower( $plural ) ),
+			'not_found'          => sprintf( esc_html__( 'No %s found', 'wc-quantity-field' ), strtolower( $plural ) ),
 			/* translators: %s: post-type plural name */
-			'not_found_in_trash' => sprintf( esc_html__( 'No %s found in Trash', 'ancenter' ), strtolower( $plural ) ),
+			'not_found_in_trash' => sprintf( esc_html__( 'No %s found in Trash', 'wc-quantity-field' ), strtolower( $plural ) ),
 			/* translators: %s: post-type plural name */
-			'parent_item_colon'  => sprintf( esc_html__( 'Parent %s: ', 'ancenter' ), $plural ),
+			'parent_item_colon'  => sprintf( esc_html__( 'Parent %s: ', 'wc-quantity-field' ), $plural ),
 			'menu_name'          => $name,
 		];
 		$labels          = wp_parse_args( $post_type_labels, $defaults_labels );
