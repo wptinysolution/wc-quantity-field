@@ -142,8 +142,13 @@ class Api {
 		];
 		$parameters = $request_data->get_params();
 		$the_settings = get_option( 'wcqf_settings', [] );
-		$the_settings['isShowQtyText'] = boolval($parameters['isShowQtyText'] ?? false );
 		$the_settings['qtyText'] = sanitize_text_field($parameters['qtyText'] ?? '' );
+		$the_settings['qtyLayout'] = sanitize_text_field($parameters['qtyLayout'] ?? '' );
+		$the_settings['isShopShowQtyText'] = boolval($parameters['isShopShowQtyText'] ?? false );
+		$the_settings['isShopShowQtyField'] = boolval($parameters['isShopShowQtyField'] ?? false );
+		
+		$the_settings['isCheckoutShowQtyField'] = boolval($parameters['isCheckoutShowQtyField'] ?? false );
+		
 		$options = update_option( 'wcqf_settings', $the_settings );
 		$result['updated'] = boolval( $options );
 	
