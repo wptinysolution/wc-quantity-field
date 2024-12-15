@@ -125,11 +125,39 @@ class Assets {
      * @returns void
     */
     public function front_end_assets( $hook ) {
+        // Define styles.
         $styles = [
             [
-                'handle' => 'ancenter-settings',
-                'src'    => wp_quantity_field_main()->get_assets_uri( 'css/backend/admin-settings.css' ),
+                'handle' => 'frontend-style',
+                'src'    => wp_quantity_field_main()->get_assets_uri( 'css/frontend.min.css' ),
             ],
         ];
+
+        $scripts = [
+            [
+                'handle' => 'custom-frontend',
+                'src'    => wp_quantity_field_main()->get_assets_uri( 'js/custom-frontend.js' ),
+                'deps'   => [],
+                'footer' => true,
+            ],
+        ];
+
+        // Register public styles.
+        foreach ( $styles as $style ) {
+            wp_register_style( $style['handle'], $style['src'], [], $this->version );
+        }
+
+        // Register public scripts.
+        foreach ( $scripts as $script ) {
+            wp_register_script( $script['handle'], $script['src'], $script['deps'], $this->version, $script['footer'] );
+        }
+
+        // Enqueue the style.
+        wp_enqueue_style( 'frontend-style' );
+
+        // Enqueue the Script.
+        wp_enqueue_script( 'custom-frontend' );
+
     }
+
 }
