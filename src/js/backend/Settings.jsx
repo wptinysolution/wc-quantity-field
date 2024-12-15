@@ -37,10 +37,10 @@ function Settings() {
                 label="Quantity Field Layout"
                 desc="Select Layout."
                 options={{
-                    'default': 'Default',
                     'layout1': 'Layout 1',
+                    'default': 'Default',
                 }}
-                defaultValue={options?.qtyLayout || 'default'}
+                defaultValue={options?.qtyLayout}
                 onValueChange={(value) => onChangeField( "qtyLayout", value)}
             />
             <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Shop Page</h4>
