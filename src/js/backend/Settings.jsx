@@ -27,45 +27,50 @@ function Settings() {
     // console.log( options )
     return (
         <PageMasterComponent>
-            <InputField
-                label="Quantity Text"
-                desc="Quantity Text Change"
-                defaultValue={options?.qtyText}
-                onChange={(e) => onChangeField("qtyText", e.target.value)}
-            />
-            <SelectField
-                label="Quantity Field Layout"
-                desc="Select Layout."
-                options={{
-                    'layout1': 'Layout 1',
-                    'default': 'Default',
-                }}
-                defaultValue={options?.qtyLayout}
-                onValueChange={(value) => onChangeField( "qtyLayout", value)}
-            />
-            <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Shop Page</h4>
-            <SwitchField
-                label="Display Quantity Field"
-                checked={options?.isShopShowQtyField}
-                onCheckedChange={(value) => onChangeField("isShopShowQtyField", value)}
-            />
-            <SwitchField
-                label="Display Quantity Text"
-                checked={options?.isShopShowQtyText}
-                onCheckedChange={(value) => onChangeField("isShopShowQtyText", value)}
-            />
-            <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Checkout Page</h4>
-            <SwitchField
-                label="Display Quantity Field"
-                checked={options?.isCheckoutShowQtyField}
-                onCheckedChange={(value) => onChangeField("isCheckoutShowQtyField", value)}
-            />
-            <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Product Page</h4>
-            <SwitchField
-                label="Display Quantity Field"
-                checked={options?.isProductShowQtyField}
-                onCheckedChange={(value) => onChangeField("isProductShowQtyField", value)}
-            />
+            { options.length > 0 ? null :
+                <>
+                    { console.log( 'options', options ) }
+                    <InputField
+                        label="Quantity Text"
+                        desc="Quantity Text Change"
+                        defaultValue={options?.qtyText}
+                        onChange={(e) => onChangeField("qtyText", e.target.value)}
+                    />
+                    <SelectField
+                        label="Quantity Field Layout"
+                        desc="Select Layout."
+                        options={{
+                            'default': 'Default',
+                            'layout1': 'Layout 1',
+                        }}
+                        value={ options?.qtyLayout || 'default'}
+                        onValueChange={(value) => onChangeField( "qtyLayout", value)}
+                    />
+                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Shop Page</h4>
+                    <SwitchField
+                        label="Display Quantity Field"
+                        checked={options?.isShopShowQtyField}
+                        onCheckedChange={(value) => onChangeField("isShopShowQtyField", value)}
+                    />
+                    <SwitchField
+                        label="Display Quantity Text"
+                        checked={options?.isShopShowQtyText}
+                        onCheckedChange={(value) => onChangeField("isShopShowQtyText", value)}
+                    />
+                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Checkout Page</h4>
+                    <SwitchField
+                        label="Display Quantity Field"
+                        checked={options?.isCheckoutShowQtyField}
+                        onCheckedChange={(value) => onChangeField("isCheckoutShowQtyField", value)}
+                    />
+                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Product Page</h4>
+                    <SwitchField
+                        label="Display Quantity Field"
+                        checked={options?.isProductShowQtyField}
+                        onCheckedChange={(value) => onChangeField("isProductShowQtyField", value)}
+                    />
+                </>
+            }
         </PageMasterComponent>
     );
 }
