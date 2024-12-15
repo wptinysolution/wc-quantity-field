@@ -132,27 +132,19 @@ class Api {
 
 		return $json_result;
 	}
-
-
+	
 	/**
-	 * @return false|string
+	 * @return array
 	 */
 	public function update_option( $request_data ) {
 		$result = [
-			'updated' => false,
 			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'textdomain' ),
 		];
-
 		$parameters = $request_data->get_params();
-
 		$the_settings = get_option( 'wcqf_settings', [] );
-		
-		if ( isset( $parameters['allGroups'] ) && is_array( $parameters['allGroups'] ) ) {
-			$the_settings['allGroups'] = $parameters['allGroups'];
-		}
-		
+		$the_settings['isShowQtyText'] = boolval($parameters['isShowQtyText'] ?? false );
+		$the_settings['qtyText'] = sanitize_text_field($parameters['qtyText'] ?? '' );
 		$options = update_option( 'wcqf_settings', $the_settings );
-
 		$result['updated'] = boolval( $options );
 	
 		if ( $result['updated'] ) {

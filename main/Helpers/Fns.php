@@ -44,7 +44,7 @@ class Fns {
 
 
 	/**
-	 * @return false|string
+	 * @return array
 	 */
 	public static function get_options() {
 		$defaults = [];

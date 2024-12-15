@@ -5,10 +5,7 @@ export const uid = function(){
 }
 export default create((set, get) => ({
     generalData:{},
-    options: {
-        allGroups: [],
-    },
-    scrollToID: null,
+    options: {},
     pluginList: [],
     notice: {
         hasNotice: false,
@@ -21,10 +18,6 @@ export default create((set, get) => ({
     },
     setOptions: async ( theOption ) => {
         set((state) => ({ options: { ...state.options, ...theOption },  scrollToID: null }));
-    },
-
-    resetScrollToID: async () => {
-        set((state) => ({ scrollToID:null }));
     },
     getTheOptions: async () => {
         const theOption = await getOptions();
@@ -45,28 +38,5 @@ export default create((set, get) => ({
             }
         }));
     },
-    addNewGroup: async () => {
-        const prevState = get();
-        const groups = prevState.options?.allGroups || [];
-        const newGroupId = uid();
-        const newGroup = [
-            ...groups,
-            {
-                id: newGroupId,
-                enable_group: true,
-                title:'Is it accessible?',
-                description: '',
-                groupBy: '',
-                groupByCat: '',
-                groupByProduct: '',
-                displayGroupName: false,
-                displayGroupDesc: false,
-            }
-        ]
-        set((state) => ({
-            options: { ...state.options, allGroups: newGroup },
-            scrollToID: newGroupId
-        }));
-    }
 
 }))
