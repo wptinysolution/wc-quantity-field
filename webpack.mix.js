@@ -99,7 +99,7 @@ if (
 		// Backend JS
 		.js('src/js/backend.jsx', 'assets/js/backend/admin-settings.js').react().sourceMaps(true, 'source-map')
 		// Frontend JS
-		.js("src/js/frontend.js", "assets/js/backend/frontend.js").sourceMaps(true, 'source-map');
+		.js("src/js/frontend.js", "assets/js/frontend/frontend.js").sourceMaps(true, 'source-map');
 
     mix.sass('src/scss/backend.scss', 'assets/css/backend/admin-settings.css').tailwind('./tailwind.config.js');
 	/**

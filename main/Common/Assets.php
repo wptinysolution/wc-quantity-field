@@ -53,10 +53,10 @@ class Assets {
 		 */
 		$this->loader->add_action( 'admin_enqueue_scripts', $this, 'backend_assets', 1 );
 
-        /**
-         * Admin scripts.
-         */
-        $this->loader->add_action( 'wp_enqueue_scripts', $this, 'front_end_assets', 1 );
+		/**
+		 * Admin scripts.
+		 */
+		$this->loader->add_action( 'wp_enqueue_scripts', $this, 'front_end_assets', 1 );
 	}
 
 
@@ -109,10 +109,10 @@ class Assets {
 				'wcqf-settings',
 				'wcqfParams',
 				[
-					'ajaxUrl'                   => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'adminUrl'                  => esc_url( admin_url() ),
-					'restApiUrl'                => esc_url_raw( rest_url() ), // site_url(rest_get_url_prefix()),
-					'rest_nonce'                => wp_create_nonce( 'wp_rest' ),
+					'ajaxUrl'                         => esc_url( admin_url( 'admin-ajax.php' ) ),
+					'adminUrl'                        => esc_url( admin_url() ),
+					'restApiUrl'                      => esc_url_raw( rest_url() ), // site_url(rest_get_url_prefix()),
+					'rest_nonce'                      => wp_create_nonce( 'wp_rest' ),
 					wp_quantity_field_main()->nonceId => wp_create_nonce( wp_quantity_field_main()->nonceId ),
 				]
 			);
@@ -120,44 +120,43 @@ class Assets {
 		}
 	}
 
-    /**
-     * Registers Front-end Scripts
-     * @returns void
-    */
-    public function front_end_assets( $hook ) {
-        // Define styles.
-        $styles = [
-            [
-                'handle' => 'frontend-style',
-                'src'    => wp_quantity_field_main()->get_assets_uri( 'css/frontend.min.css' ),
-            ],
-        ];
+	/**
+	 * Registers Front-end Scripts
+	 *
+	 * @returns void
+	 */
+	public function front_end_assets( $hook ) {
+		// Define styles.
+		$styles = [
+			[
+				'handle' => 'wcqf-frontend',
+				'src'    => wp_quantity_field_main()->get_assets_uri( 'css/frontend.min.css' ),
+			],
+		];
 
-        $scripts = [
-            [
-                'handle' => 'custom-frontend',
-                'src'    => wp_quantity_field_main()->get_assets_uri( 'js/custom-frontend.js' ),
-                'deps'   => [],
-                'footer' => true,
-            ],
-        ];
+		$scripts = [
+			[
+				'handle' => 'wcqf-frontend',
+				'src'    => wp_quantity_field_main()->get_assets_uri( 'js/frontend/frontend.js' ),
+				'deps'   => [],
+				'footer' => true,
+			],
+		];
 
-        // Register public styles.
-        foreach ( $styles as $style ) {
-            wp_register_style( $style['handle'], $style['src'], [], $this->version );
-        }
+		// Register public styles.
+		foreach ( $styles as $style ) {
+			wp_register_style( $style['handle'], $style['src'], [], $this->version );
+		}
 
-        // Register public scripts.
-        foreach ( $scripts as $script ) {
-            wp_register_script( $script['handle'], $script['src'], $script['deps'], $this->version, $script['footer'] );
-        }
+		// Register public scripts.
+		foreach ( $scripts as $script ) {
+			wp_register_script( $script['handle'], $script['src'], $script['deps'], $this->version, $script['footer'] );
+		}
 
-        // Enqueue the style.
-        wp_enqueue_style( 'frontend-style' );
+		// Enqueue the style.
+		wp_enqueue_style( 'frontend-style' );
 
-        // Enqueue the Script.
-        wp_enqueue_script( 'custom-frontend' );
-
-    }
-
+		// Enqueue the Script.
+		wp_enqueue_script( 'custom-frontend' );
+	}
 }
