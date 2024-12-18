@@ -9,12 +9,12 @@
  * Author URI:        https://www.wptinysolutions.com/
  * Text Domain:       wc-quantity-field
  * Domain Path:       /languages
- * License:           GPLv3
- * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
+ * License:   GPLv3
+ * License URI:                http://www.gnu.org/licenses/gpl-3.0.html
  * @package TinySolutions\mlt
  */
 
-// Do not allow directly accessing this file.
+// Do not allow directly accessing this the file.
 
 use TinySolutions\wp_quantity_field\Plugin;
 
