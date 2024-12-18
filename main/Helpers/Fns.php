@@ -27,7 +27,6 @@ class Fns {
 		if ( wp_verify_nonce( $nonce, wp_quantity_field_main()->nonceId ) ) {
 			return true;
 		}
-
 		return false;
 	}
 
@@ -38,7 +37,6 @@ class Fns {
 	 */
 	public static function is_plugins_installed( $plugin_file_path = null ) {
 		$installed_plugins_list = get_plugins();
-
 		return isset( $installed_plugins_list[ $plugin_file_path ] );
 	}
 
@@ -49,7 +47,6 @@ class Fns {
 	public static function get_options() {
 		$defaults = [];
 		$options  = get_option( 'wcqf_settings' );
-        error_log( print_r( $options , true) . "\n\n", 3, __DIR__ . '/log.txt' );
 		return wp_parse_args( $options, $defaults );
 	}
 
