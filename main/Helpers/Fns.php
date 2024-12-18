@@ -49,6 +49,7 @@ class Fns {
 	public static function get_options() {
 		$defaults = [];
 		$options  = get_option( 'wcqf_settings' );
+        error_log( print_r( $options , true) . "\n\n", 3, __DIR__ . '/log.txt' );
 		return wp_parse_args( $options, $defaults );
 	}
 

@@ -1,14 +1,13 @@
-.sc-quantity-wrapper .quantity:before {
-  content:"Quantity:";
+.wcqf-quanity-text .quantity:before {
   margin-right:10px
 }
-.sc-quantity-wrapper .quantity {
+.wcqf-quanity-text .quantity {
   margin-bottom: 15px;
 }
-.sc-quantity-wrapper .quantity{
+.wcqf-quanity-text .quantity{
   margin-bottom: 0;
 }
-.woocommerce .sc-quantity-wrapper .quantity input{
+.woocommerce .wcqf-quanity-text .quantity input{
   padding: 0 8px;
   text-align: left;
   width: 60px;

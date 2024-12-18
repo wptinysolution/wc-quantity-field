@@ -1,7 +1,7 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Quantity Field For Woocommerce
+ * Plugin Name:       Quantity Field For Woocommerce ( Masud )
  * Plugin URI:        https://wordpress.org/plugins/admin-notice-centralization
  * Description:       Boiler
  * Version:           0.0.2

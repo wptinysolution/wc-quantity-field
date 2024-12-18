@@ -146,9 +146,9 @@ class Api {
 		$the_settings['qtyLayout'] = sanitize_text_field($parameters['qtyLayout'] ?? '' );
 		$the_settings['isShopShowQtyText'] = boolval($parameters['isShopShowQtyText'] ?? false );
 		$the_settings['isShopShowQtyField'] = boolval($parameters['isShopShowQtyField'] ?? false );
-		
+
 		$the_settings['isCheckoutShowQtyField'] = boolval($parameters['isCheckoutShowQtyField'] ?? false );
-		
+
 		$options = update_option( 'wcqf_settings', $the_settings );
 		$result['updated'] = boolval( $options );
 	
@@ -157,6 +157,8 @@ class Api {
 		}
 		return $result;
 	}
+
+
 
 	/**
 	 * @return false|string
