@@ -1,19 +1,5 @@
-/**
- * Backend JS.
- *
- */
-
-'use strict';
-
-import '../scss/frontend.scss';
-import { modules } from './frontend/modules';
-
-let frontend = {};
-
-frontend = {
-	init: () => {
-		modules();
-	},
-};
-
-frontend.init();
+(function($) {
+	$(".sc-quantity-wrapper").on("change", "input.qty", function() {
+		$(this).closest(".sc-quantity-wrapper").find("[data-quantity]").attr("data-quantity", $(this).val());
+	});
+})(jQuery);

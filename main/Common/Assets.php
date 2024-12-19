@@ -154,9 +154,9 @@ class Assets {
 		}
 
 		// Enqueue the style.
-		wp_enqueue_style( 'frontend-style' );
+		wp_enqueue_style( 'wcqf-frontend' );
 
 		// Enqueue the Script.
-		wp_enqueue_script( 'custom-frontend' );
+		wp_enqueue_script( 'wcqf-frontend' );
 	}
 }
