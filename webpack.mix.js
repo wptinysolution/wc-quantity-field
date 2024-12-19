@@ -46,8 +46,9 @@ if (process.env.npm_config_package) {
 		// Select All file then paste on list
 		let includes = [
 			"assets",
-			"includes",
-			"languages",
+            "languages",
+            "main",
+            'templates',
 			"vendor",
 			"views",
 			"index.php",

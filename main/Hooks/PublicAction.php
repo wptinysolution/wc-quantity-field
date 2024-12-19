@@ -35,7 +35,6 @@ class PublicAction {
 		$api_value = Fns::get_options();
 
 		add_action( 'woocommerce_loop_add_to_cart_link', [ $this, 'add_quantity_field' ], 20, 2 );
-		add_action( 'woocommerce_quantity_input_args', [ $this, 'sc_quantity_input_args' ], 20, 2 );
 	}
 
 	/**
@@ -45,12 +44,17 @@ class PublicAction {
 	public function add_quantity_field( $html, $product ) {
 		$custom_file = $html;
 		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
-			$custom_file   = '<div class="sc-quantity-wrapper d-flex wcqf-quanity-text">';
-			$custom_file  .= woocommerce_quantity_input( [], $product, false );
+			$custom_file   = '<div class="sc-quantity-wrapper wcqf-quanity-text">';
+			$custom_file  .= woocommerce_quantity_input( [
+				'min_value' => 1,
+				'input_value' => 1,
+				'step' => 1,
+				'max_value' => $product->get_stock_quantity(),
+			], $product, false );
 			$custom_file  .= $html;
 			$custom_file  .= '</div>';
 			$api_value     = Fns::get_options();
-			$quantity_text = ! empty( $api_value['qtyText'] ) ? sanitize_text_field( $api_value['qtyText'] ) : 'Quantity';
+			$quantity_text = ! empty( $api_value['qtyText'] ) ? sanitize_text_field( $api_value['qtyText'] ) : esc_html__('Quantity', 'wc-quantity-field' );
 			$quatity_field = ! empty( $api_value['isShopShowQtyText'] ) && (int) $api_value['isShopShowQtyText'] === 1;
 			if ( $quatity_field ) {
 				$custom_file .= '<style>
@@ -62,18 +66,5 @@ class PublicAction {
 		}
 		return $custom_file;
 	}
-
-	/**
-	 * add max and min quantity value
-	 * return $arges
-	 */
-	public function sc_quantity_input_args( $args, $product ) {
-		if ( is_singular( 'product' ) && $product->is_type( 'simple' ) && $product->is_purchasable() & $product->is_in_stock() && ! $product->is_sold_individually() ) {
-			$args['input_value'] = 1;
-		}
-		$args['max_value'] = $product->get_stock_quantity();
-		$args['min_value'] = 0;
-		$args['step']      = 1;
-		return $args;
-	}
+	
 }
