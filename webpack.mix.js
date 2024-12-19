@@ -32,6 +32,13 @@ mix.webpackConfig({
 });
 
 
+// mix.webpackConfig({
+// 	stats: {
+// 		children: true,
+// 	},
+// });
+
+
 if (process.env.npm_config_package) {
 	mix.then(function () {
 		const copyTo = path.resolve(`${temDirectory}/${package_slug}`);
