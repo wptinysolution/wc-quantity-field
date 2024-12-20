@@ -1,13 +1,4 @@
 (function($) {
-    $(".sc-quantity-wrapper").on("input change", "input.qty", function() {
-        let val = $(this).val();
-        if (val <= 0 || isNaN(val)) {
-            val = 1;
-            $(this).val(val);
-        }
-        $(this).closest(".sc-quantity-wrapper").find("[data-quantity]").attr("data-quantity", val);
-    });
-
     $(document).on("click", ".qty-minus, .qty-plus", function() {
         const button = $(this);
         const input = button.closest(".quantity-buttons").find("input.qty");
@@ -23,7 +14,7 @@
         input.val(currentValue).trigger("change");
     });
 
-    $(document).on("input", "input.qty", function() {
+    $(document).on("input change", "input.qty", function() {
         const input = $(this);
         const min = parseInt(input.attr("min")) || 1;
         const max = parseInt(input.attr("max")) || Infinity;
@@ -31,5 +22,6 @@
         if (value < min) value = min;
         if (value > max) value = max;
         input.val(value);
+        input.closest(".sc-quantity-wrapper").find("[data-quantity]").attr("data-quantity", value);
     });
 })(jQuery);
