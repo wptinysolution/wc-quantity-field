@@ -1,6 +1,6 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Admin;
+namespace TinySolutions\wcqf\Admin;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {

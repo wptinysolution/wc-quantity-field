@@ -2,26 +2,26 @@
 /**
  * Main initialization class.
  *
- * @package TinySolutions\wp_quantity_field
+ * @package TinySolutions\wcqf
  */
 
-namespace TinySolutions\wp_quantity_field;
+namespace TinySolutions\wcqf;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
 
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Register\Ninjagallery;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
-use TinySolutions\wp_quantity_field\Admin\Installation;
-use TinySolutions\wp_quantity_field\Admin\Dependencies;
-use TinySolutions\wp_quantity_field\Common\Assets;
-use TinySolutions\wp_quantity_field\Hooks\MainHooks;
-use TinySolutions\wp_quantity_field\Admin\AdminMenu;
-use TinySolutions\wp_quantity_field\Common\Api;
-use TinySolutions\wp_quantity_field\Admin\Review;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Register\Ninjagallery;
+use TinySolutions\wcqf\Traits\SingletonTrait;
+use TinySolutions\wcqf\Admin\Installation;
+use TinySolutions\wcqf\Admin\Dependencies;
+use TinySolutions\wcqf\Common\Assets;
+use TinySolutions\wcqf\Hooks\MainHooks;
+use TinySolutions\wcqf\Admin\AdminMenu;
+use TinySolutions\wcqf\Common\Api;
+use TinySolutions\wcqf\Admin\Review;
 
 /**
  * Main initialization class.

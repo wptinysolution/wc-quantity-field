@@ -2,14 +2,14 @@
 /**
  * Main ActionHooks class.
  *
- * @package TinySolutions\wp_quantity_field
+ * @package TinySolutions\wcqf
  */
 
-namespace TinySolutions\wp_quantity_field\Hooks;
+namespace TinySolutions\wcqf\Hooks;
 
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
-use TinySolutions\wp_quantity_field\Helpers\Fns;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Traits\SingletonTrait;
+use TinySolutions\wcqf\Helpers\Fns;
 
 defined( 'ABSPATH' ) || exit();
 

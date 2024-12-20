@@ -1,5 +1,5 @@
 {
-  "name": "tinysolutions/wp-plugin-wp_quantity_field-react-with-mix",
+  "name": "tinysolutions/wp-plugin-wcqf-react-with-mix",
   "authors": [
     {
       "name": "TinySolutions",
@@ -8,7 +8,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "TinySolutions\\wp_quantity_field\\": "main"
+      "TinySolutions\\wcqf\\": "main"
     }
   },
   "description": ""

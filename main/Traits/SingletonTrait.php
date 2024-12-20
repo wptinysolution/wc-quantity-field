@@ -3,7 +3,7 @@
  *
  */
 
-namespace TinySolutions\wp_quantity_field\Traits;
+namespace TinySolutions\wcqf\Traits;
 
 // Do not allow directly accessing this file.
 

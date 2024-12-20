@@ -5,11 +5,11 @@
  * @package TinySolutions\WM
  */
 
-namespace TinySolutions\wp_quantity_field\Hooks;
+namespace TinySolutions\wcqf\Hooks;
 
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Helpers\Fns;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Helpers\Fns;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 
 defined( 'ABSPATH' ) || exit();
 

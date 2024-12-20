@@ -3,10 +3,10 @@
  *
  */
 
-namespace TinySolutions\wp_quantity_field\Traits;
+namespace TinySolutions\wcqf\Traits;
 
 // Do not allow directly accessing this file.
-use TinySolutions\wp_quantity_field\Helpers\Fns;
+use TinySolutions\wcqf\Helpers\Fns;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );

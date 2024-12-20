@@ -1,8 +1,8 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Register;
+namespace TinySolutions\wcqf\Register;
 
-use TinySolutions\wp_quantity_field\Abs\CustomPostType;
+use TinySolutions\wcqf\Abs\CustomPostType;
 
 class Teammembers extends CustomPostType {
 	// must use

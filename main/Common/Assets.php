@@ -1,8 +1,8 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Common;
+namespace TinySolutions\wcqf\Common;
 
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -70,7 +70,7 @@ class Assets {
 		$styles = [
 			[
 				'handle' => 'wcqf-settings',
-				'src'    => wp_quantity_field_main()->get_assets_uri( 'css/backend/admin-settings.css' ),
+				'src'    => wcqf()->get_assets_uri( 'css/backend/admin-settings.css' ),
 			],
 		];
 
@@ -82,7 +82,7 @@ class Assets {
 		$scripts = [
 			[
 				'handle' => 'wcqf-settings',
-				'src'    => wp_quantity_field_main()->get_assets_uri( 'js/backend/admin-settings.js' ),
+				'src'    => wcqf()->get_assets_uri( 'js/backend/admin-settings.js' ),
 				'deps'   => [],
 				'footer' => true,
 			],
@@ -113,7 +113,7 @@ class Assets {
 					'adminUrl'                        => esc_url( admin_url() ),
 					'restApiUrl'                      => esc_url_raw( rest_url() ), // site_url(rest_get_url_prefix()),
 					'rest_nonce'                      => wp_create_nonce( 'wp_rest' ),
-					wp_quantity_field_main()->nonceId => wp_create_nonce( wp_quantity_field_main()->nonceId ),
+					wcqf()->nonceId => wp_create_nonce( wcqf()->nonceId ),
 				]
 			);
 
@@ -130,14 +130,14 @@ class Assets {
 		$styles = [
 			[
 				'handle' => 'wcqf-frontend',
-				'src'    => wp_quantity_field_main()->get_assets_uri( 'css/frontend.min.css' ),
+				'src'    => wcqf()->get_assets_uri( 'css/frontend.min.css' ),
 			],
 		];
 
 		$scripts = [
 			[
 				'handle' => 'wcqf-frontend',
-				'src'    => wp_quantity_field_main()->get_assets_uri( 'js/frontend/frontend.js' ),
+				'src'    => wcqf()->get_assets_uri( 'js/frontend/frontend.js' ),
 				'deps'   => [],
 				'footer' => true,
 			],

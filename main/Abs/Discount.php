@@ -2,10 +2,10 @@
 /**
  * Discount
  */
-namespace TinySolutions\wp_quantity_field\Abs;
+namespace TinySolutions\wcqf\Abs;
 
 // Do not allow directly accessing this file.
-use TinySolutions\wp_quantity_field\Common\Loader;
+use TinySolutions\wcqf\Common\Loader;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
@@ -48,7 +48,7 @@ abstract class Discount {
 			'check_pro'      => true,
 			'download_link'  => 'https://www.wptinysolutions.com/tiny-products/admin-notice-centralization/',
 			'plugin_name'    => 'Custom Post Type Woocommerce Integration Pro',
-			'image_url'      => wp_quantity_field_main()->get_assets_uri( 'images/cpt-woo-icon-150x150.png' ),
+			'image_url'      => wcqf()->get_assets_uri( 'images/cpt-woo-icon-150x150.png' ),
 			'option_name'    => '',
 			'start_date'     => '',
 			'end_date'       => '',

@@ -2,10 +2,10 @@
 /**
  * Fns Helpers class
  *
- * @package  TinySolutions\wp_quantity_field
+ * @package  TinySolutions\wcqf
  */
 
-namespace TinySolutions\wp_quantity_field\Helpers;
+namespace TinySolutions\wcqf\Helpers;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,8 +23,8 @@ class Fns {
 	 * @return bool
 	 */
 	public static function verify_nonce() {
-		$nonce = isset( $_REQUEST[ wp_quantity_field_main()->nonceId ] ) ? $_REQUEST[ wp_quantity_field_main()->nonceId ] : null;
-		if ( wp_verify_nonce( $nonce, wp_quantity_field_main()->nonceId ) ) {
+		$nonce = isset( $_REQUEST[ wcqf()->nonceId ] ) ? $_REQUEST[ wcqf()->nonceId ] : null;
+		if ( wp_verify_nonce( $nonce, wcqf()->nonceId ) ) {
 			return true;
 		}
 		return false;

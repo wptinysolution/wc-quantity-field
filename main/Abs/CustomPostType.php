@@ -2,11 +2,11 @@
 /**
  *
  */
-namespace TinySolutions\wp_quantity_field\Abs;
+namespace TinySolutions\wcqf\Abs;
 
 // Do not allow directly accessing this file.
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Helpers\Fns;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Helpers\Fns;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );

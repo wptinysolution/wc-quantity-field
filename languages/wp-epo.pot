@@ -1,8 +1,8 @@
-# Copyright (C) 2024 My Plugin Boilerplate - A modern WordPress plugin wp_quantity_field.
-# This file is distributed under the same license as the My Plugin Boilerplate - A modern WordPress plugin wp_quantity_field. package.
+# Copyright (C) 2024 My Plugin Boilerplate - A modern WordPress plugin wcqf.
+# This file is distributed under the same license as the My Plugin Boilerplate - A modern WordPress plugin wcqf. package.
 msgid ""
 msgstr ""
-"Project-Id-Version: My Plugin Boilerplate - A modern WordPress plugin wp_quantity_field.\n"
+"Project-Id-Version: My Plugin Boilerplate - A modern WordPress plugin wcqf.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

@@ -1,9 +1,9 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Admin;
+namespace TinySolutions\wcqf\Admin;
 
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 
 /**
  * Review class

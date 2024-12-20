@@ -1,9 +1,9 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Common;
+namespace TinySolutions\wcqf\Common;
 
-use TinySolutions\wp_quantity_field\Helpers\Fns;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Helpers\Fns;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 use WP_Error;
 
 /**

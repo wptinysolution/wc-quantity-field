@@ -1,14 +1,14 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Admin;
+namespace TinySolutions\wcqf\Admin;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
 
-use TinySolutions\wp_quantity_field\Common\Loader;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Common\Loader;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 
 /**
  * Sub menu class

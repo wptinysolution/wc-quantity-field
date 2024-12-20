@@ -1,10 +1,10 @@
 <?php
 
-namespace TinySolutions\wp_quantity_field\Register;
+namespace TinySolutions\wcqf\Register;
 
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
-use TinySolutions\wp_quantity_field\Abs\CustomPostType;
-use TinySolutions\wp_quantity_field\Traits\Taxonomies;
+use TinySolutions\wcqf\Traits\SingletonTrait;
+use TinySolutions\wcqf\Abs\CustomPostType;
+use TinySolutions\wcqf\Traits\Taxonomies;
 
 class Ninjagallery extends CustomPostType {
 	

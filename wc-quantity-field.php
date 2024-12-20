@@ -16,7 +16,7 @@
 
 // Do not allow directly accessing this the file.
 
-use TinySolutions\wp_quantity_field\Plugin;
+use TinySolutions\wcqf\Plugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
@@ -46,8 +46,8 @@ require_once WC_QUANTITY_FIELD_PATH . 'vendor/autoload.php';
 /**
  * @return Plugin
  */
-function wp_quantity_field_main() {
+function wcqf() {
 	return Plugin::instance();
 }
 
-add_action( 'plugins_loaded', 'wp_quantity_field_main' );
+add_action( 'plugins_loaded', 'wcqf' );

@@ -91,7 +91,7 @@ if (
 		fs.ensureDir(languages, function (err) {
 			if (err) return console.error(err); // if file or folder does not exist
 			wpPot({
-				package: "My Plugin Boilerplate - A modern WordPress plugin wp_quantity_field.",
+				package: "My Plugin Boilerplate - A modern WordPress plugin wcqf.",
 				bugReport: "https://github.com/smrafiz/wp-epo",
 				src: "**/*.php",
 				domain: "my-plugin-text-domain",

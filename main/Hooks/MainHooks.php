@@ -2,13 +2,13 @@
 /**
  * Main ActionHooks class.
  *
- * @package TinySolutions\wp_quantity_field
+ * @package TinySolutions\wcqf
  */
 
-namespace TinySolutions\wp_quantity_field\Hooks;
+namespace TinySolutions\wcqf\Hooks;
 
-use TinySolutions\wp_quantity_field\Admin\Upgrade;
-use TinySolutions\wp_quantity_field\Traits\SingletonTrait;
+use TinySolutions\wcqf\Admin\Upgrade;
+use TinySolutions\wcqf\Traits\SingletonTrait;
 
 defined( 'ABSPATH' ) || exit();
 

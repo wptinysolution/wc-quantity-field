@@ -2,7 +2,7 @@
 /**
  *
  */
-namespace TinySolutions\wp_quantity_field\Common;
+namespace TinySolutions\wcqf\Common;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
