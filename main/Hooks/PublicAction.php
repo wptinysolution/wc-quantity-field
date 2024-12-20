@@ -31,9 +31,6 @@ class PublicAction {
 	 */
 	private function __construct() {
 		$this->loader = Loader::instance();
-
-		$api_value = Fns::get_options();
-
 		add_action( 'woocommerce_loop_add_to_cart_link', [ $this, 'add_quantity_field' ], 20, 2 );
 	}
 
@@ -43,17 +40,10 @@ class PublicAction {
 	 * */
 	public function add_quantity_field( $html, $product ) {
 
-        $api_value_filed     = Fns::get_options();
-
-        error_log( print_r( $api_value_filed , true) . "\n\n", 3, __DIR__ . '/log.txt' );
-
 		$custom_file = $html;
 		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
-
             $api_value     = Fns::get_options();
-
             if( $api_value['qtyLayout'] === 'layout1' ){
-
                 $custom_file   = '<div class="sc-quantity-wrapper wcqf-quanity-layout2">';
                 $custom_file  .= '<div class="quantity-buttons">';
                 $custom_file  .= '<button type="button" class="qty-minus">-</button>';
@@ -91,5 +81,4 @@ class PublicAction {
 		}
 		return $custom_file;
 	}
-	
 }
