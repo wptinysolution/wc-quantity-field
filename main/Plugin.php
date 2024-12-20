@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use TinySolutions\wcqf\Common\Loader;
-use TinySolutions\wcqf\Register\Ninjagallery;
 use TinySolutions\wcqf\Traits\SingletonTrait;
 use TinySolutions\wcqf\Admin\Installation;
 use TinySolutions\wcqf\Admin\Dependencies;
@@ -122,7 +121,6 @@ final class Plugin {
 	 */
 	public function init() {
 		do_action( 'wcqf/before_init' );
-		Ninjagallery::instance();
 		Review::instance();
 		// Include File.
 		Assets::instance();
@@ -155,7 +153,7 @@ final class Plugin {
 	 */
 	private function run() {
 		if ( Dependencies::instance()->check() ) {
-            $this->init();
+			$this->init();
 			do_action( 'wcqf/after_run' );
 		}
 		$this->loader->run();

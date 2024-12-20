@@ -2,7 +2,6 @@
 
 namespace TinySolutions\wcqf\Admin;
 
-
 use TinySolutions\wcqf\Common\Loader;
 use TinySolutions\wcqf\Traits\SingletonTrait;
 
@@ -19,17 +18,17 @@ class Dependencies {
 	 * Singleton
 	 */
 	use SingletonTrait;
-	
+
 	/**
 	 * Plugin Name
 	 */
-	const PLUGIN_NAME = 'Custom Post Type Woocommerce Integration';
-	
+	const PLUGIN_NAME = 'Quantity Field For Woocommerce';
+
 	/**
 	 * Php Version
 	 */
 	const MINIMUM_PHP_VERSION = '7.4';
-	
+
 	/**
 	 * Main Plugin Version
 	 */
@@ -61,7 +60,7 @@ class Dependencies {
 	 * Class Constructor
 	 */
 	private function __construct() {
-        $this->loader        = Loader::instance();
+		$this->loader = Loader::instance();
 	}
 	/**
 	 * Checking Status
@@ -73,19 +72,19 @@ class Dependencies {
 			$this->allOk             = false;
 			$this->is_php_compatible = false;
 		}
-		//$is_active = in_array( 'cpt-woo-integration/cpt-woo-integration.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true );
-		//if ( is_multisite() ) {
-		//    if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
-		//        include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		//    }
-		//    if ( function_exists( 'is_plugin_active_for_network' ) ) {
-		//        $is_active = is_plugin_active_for_network( 'cpt-woo-integration/cpt-woo-integration.php' ) || $is_active;
-		//    }
-		//}
+		// $is_active = in_array( 'cpt-woo-integration/cpt-woo-integration.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true );
+		// if ( is_multisite() ) {
+		// if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+		// include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		// }
+		// if ( function_exists( 'is_plugin_active_for_network' ) ) {
+		// $is_active = is_plugin_active_for_network( 'cpt-woo-integration/cpt-woo-integration.php' ) || $is_active;
+		// }
+		// }
 		// $this->is_active_main = $is_active;
-		//if ( ! $is_active ) {
-		//	$this->allOk = false;
-		//}
+		// if ( ! $is_active ) {
+		// $this->allOk = false;
+		// }
 		$this->loader->add_action( 'admin_notices', $this, 'show_admin_notice' );
 		return $this->allOk;
 	}
@@ -100,7 +99,7 @@ class Dependencies {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Checking Status
 	 *
@@ -131,30 +130,30 @@ class Dependencies {
 			admin_url( 'plugin-install.php' )
 		);
 		?>
-        <div class="notice notice-error">
-            <p>
-                <strong>Custom Post Type Woocommerce Integration PRO</strong>
-                is not working, You need to install and activate
-                <a class="thickbox open-plugin-details-modal" href="<?php echo esc_url( $link ); ?>">
-                    <strong>Custom Post Type Woocommerce Integration</strong>
-                </a> free,
-                <strong>Minimum version <?php echo esc_html( self::MINIMUM_WC_QUANTITY_FIELD_VERSION ); ?></strong>.
-            </p>
-        </div>
+		<div class="notice notice-error">
+			<p>
+				<strong>Custom Post Type Woocommerce Integration PRO</strong>
+				is not working, You need to install and activate
+				<a class="thickbox open-plugin-details-modal" href="<?php echo esc_url( $link ); ?>">
+					<strong>Custom Post Type Woocommerce Integration</strong>
+				</a> free,
+				<strong>Minimum version <?php echo esc_html( self::MINIMUM_WC_QUANTITY_FIELD_VERSION ); ?></strong>.
+			</p>
+		</div>
 		<?php
 	}
-	
+
 	/**
 	 * Admin Notice For Required PHP Version
 	 */
 	public function minimum_php_version() {
 		?>
-        <div class="notice notice-warning is-dismissible">
-            <p>
+		<div class="notice notice-warning is-dismissible">
+			<p>
 				<?php echo esc_html( self::PLUGIN_NAME ); ?> <strong> requires PHP </strong>
-                version <?php echo esc_html( self::MINIMUM_PHP_VERSION ); ?> or greater.
-            </p>
-        </div>
+				version <?php echo esc_html( self::MINIMUM_PHP_VERSION ); ?> or greater.
+			</p>
+		</div>
 		<?php
 	}
 }
