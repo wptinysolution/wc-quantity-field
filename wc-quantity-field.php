@@ -10,7 +10,7 @@
  * Text Domain:       wc-quantity-field
  * Domain Path:       /languages
  * License:   GPLv3
- * License URI:                http://www.gnu.org/licenses/gpl-3.0.html
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * @package TinySolutions\mlt
  */
 

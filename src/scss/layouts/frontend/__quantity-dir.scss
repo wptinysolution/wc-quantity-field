@@ -12,3 +12,49 @@
   text-align: left;
   width: 60px;
 }
+
+//Layout Style Two
+
+.wcqf-quanity-layout2 {
+  .quantity-buttons {
+    display: flex;
+    align-items: center;
+  }
+  .qty-minus,
+  .qty-plus {
+    cursor: pointer;
+    color: #222222;
+    &:focus,
+    &:hover{
+      color: #fff;
+      background-color: #222222;
+    }
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  .quantity .qty{
+    background: #F4F4F4;
+    width: 50px !important;
+    padding: 0;
+  }
+  .quantity-buttons{
+    border: 1px solid #F4F4F4;
+    border-radius: 5px;
+    width: 140px;
+  }
+  button{
+    background-color: #fff;
+    width: 45px;
+  }
+  button,
+  .quantity .qty{
+    height: 40px;
+    border:none !important;
+  }
+}
