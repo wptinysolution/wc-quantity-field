@@ -1,5 +1,6 @@
 {
-  "name": "tinysolutions/wp-plugin-wcqf-react-with-mix",
+  "name": "tinysolutions/wc-quantity-field",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "TinySolutions",
