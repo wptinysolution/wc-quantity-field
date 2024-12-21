@@ -30,12 +30,14 @@ function Settings() {
             { options.length > 0 ? null :
                 <>
                     { console.log( 'options', options ) }
-                    <InputField
-                        label="Quantity Text"
-                        desc="Quantity Text Change"
-                        defaultValue={options?.qtyText}
-                        onChange={(e) => onChangeField("qtyText", e.target.value)}
-                    />
+                    {options?.qtyLayout != 'layout1' && (
+                        <InputField
+                            label="Quantity Text"
+                            desc="Quantity Text Change"
+                            defaultValue={options?.qtyText}
+                            onChange={(e) => onChangeField("qtyText", e.target.value)}
+                        />
+                    )}
                     <SelectField
                         label="Quantity Field Layout"
                         desc="Select Layout."
@@ -52,11 +54,13 @@ function Settings() {
                         checked={options?.isShopShowQtyField}
                         onCheckedChange={(value) => onChangeField("isShopShowQtyField", value)}
                     />
-                    <SwitchField
-                        label="Display Quantity Text"
-                        checked={options?.isShopShowQtyText}
-                        onCheckedChange={(value) => onChangeField("isShopShowQtyText", value)}
-                    />
+                    {options?.qtyLayout != 'layout1' && (
+                        <SwitchField
+                            label="Display Quantity Text"
+                            checked={options?.isShopShowQtyText}
+                            onCheckedChange={(value) => onChangeField("isShopShowQtyText", value)}
+                        />
+                    )}
                     <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Checkout Page</h4>
                     <SwitchField
                         label="Display Quantity Field"
