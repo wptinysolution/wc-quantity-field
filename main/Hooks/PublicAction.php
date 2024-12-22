@@ -29,25 +29,27 @@ class PublicAction {
 	 * Class Constructor
 	 */
 	private function __construct() {
-
         $this->loader = Loader::instance();
-
-        add_action( 'woocommerce_loop_add_to_cart_link', [ $this, 'add_quantity_field' ], 20, 2 );
-
-        add_action('', [ $this, 'woocommerce_before_quantity_input_field']);
-
-
-
+		$this->loader->add_action('woocommerce_before_quantity_input_field', $this, 'before_quantity_input_field' );
+		$this->loader->add_action('woocommerce_after_quantity_input_field', $this, 'after_quantity_input_field' );
         //add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'add_quantity_field_single_page' ], 20);
 
         //add_action('woocommerce_before_single_product', [ $this, 'remove_single_product_quantity_field' ]);
     }
 
-//    public function remove_single_product_quantity_field() {
-//        if (is_product()) {
-//            remove_action('woocommerce_after_add_to_cart_quantity', 'woocommerce_quantity_input', 10);
-//        }
-//    }
+    public function before_quantity_input_field() {
+        ?>
+        <div class="quantity-buttons">
+            <button type="button" class="qty-minus">-</button>
+		<?php
+    }
+	
+	public function after_quantity_input_field() {
+		?>
+        <button type="button" class="qty-plus">+</button>
+		</div>
+		<?php
+	}
 
     private function render_quantity_field($html, $product) {
         $api_value = Fns::get_options();
@@ -92,27 +94,7 @@ class PublicAction {
         return $custom_file;
     }
 
-    /**
-     * Add quantity field
-     *
-     * @param string $html
-     * @param WC_Product $product
-     * @return string
-     */
-    public function add_quantity_field($html, $product) {
-        $qty_field = woocommerce_quantity_input(
-            [
-                'min_value'   => 1,
-                'input_value' => 1,
-                'step'        => 1,
-                'max_value'   => $product->get_stock_quantity(),
-            ],
-            $product,
-            false
-        );
-        return $qty_field.$html;
-    }
-
+ 
 
 
     /**
