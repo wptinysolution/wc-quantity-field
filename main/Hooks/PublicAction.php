@@ -6,7 +6,6 @@
  */
 
 namespace TinySolutions\wcqf\Hooks;
-
 use TinySolutions\wcqf\Common\Loader;
 use TinySolutions\wcqf\Traits\SingletonTrait;
 use TinySolutions\wcqf\Helpers\Fns;
@@ -30,70 +29,28 @@ class PublicAction {
 	 * Class Constructor
 	 */
 	private function __construct() {
-        $this->loader = Loader::instance();
-        add_action( 'woocommerce_loop_add_to_cart_link', [ $this, 'add_quantity_field' ], 20, 2 );
-        add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'add_quantity_field_single_page' ], 20);
 
+        $this->loader = Loader::instance();
+
+        add_action( 'woocommerce_loop_add_to_cart_link', [ $this, 'add_quantity_field' ], 20, 2 );
+
+        add_action('', [ $this, 'woocommerce_before_quantity_input_field']);
+
+
+
+        //add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'add_quantity_field_single_page' ], 20);
+
+        //add_action('woocommerce_before_single_product', [ $this, 'remove_single_product_quantity_field' ]);
     }
 
-	/**
-	 * add quantity field
-	 * return $html
-	 * */
-	public function add_quantity_field( $html, $product ) {
-		$custom_file = $html;
-		if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
-			$api_value = Fns::get_options();
-			$qty_field = woocommerce_quantity_input(
-				[
-					'min_value'   => 1,
-					'input_value' => 1,
-					'step'        => 1,
-					'max_value'   => $product->get_stock_quantity(),
-				],
-				$product,
-				false
-			);
-			if ( $api_value['qtyLayout'] === 'layout1' ) {
-				$custom_file  = '<div class="sc-quantity-wrapper wcqf-quantity-layout2">';
-				$custom_file .= '<div class="quantity-buttons">';
-				$custom_file .= '<button type="button" class="qty-minus">-</button>';
-				$custom_file .= $qty_field;
-				$custom_file .= '<button type="button" class="qty-plus">+</button>';
-				$custom_file .= '</div>';
-				$custom_file .= $html;
-				$custom_file .= '</div>';
-			} else {
-				$custom_file   = '<div class="sc-quantity-wrapper wcqf-quanity-text">';
-				$custom_file  .= $qty_field;
-				$custom_file  .= $html;
-				$custom_file  .= '</div>';
-				$quantity_text = ! empty( $api_value['qtyText'] ) ? sanitize_text_field( $api_value['qtyText'] ) : esc_html__( 'Quantity', 'wc-quantity-field' );
-				$quatity_field = ! empty( $api_value['isShopShowQtyText'] ) && (int) $api_value['isShopShowQtyText'] === 1;
-				if ( $quatity_field ) {
-					$custom_file .= '<style>
-                    .wcqf-quanity-text .quantity:before {
-                      content:"' . esc_html( $quantity_text ) . ':";
-                    }
-                </style>';
-				}
-			}
-		}
-		return $custom_file;
-	}
+//    public function remove_single_product_quantity_field() {
+//        if (is_product()) {
+//            remove_action('woocommerce_after_add_to_cart_quantity', 'woocommerce_quantity_input', 10);
+//        }
+//    }
 
-    public function add_quantity_field_single_page() {
-        global $product;
-
-        // Ensure this logic runs only for simple, purchasable, in-stock products.
-        if (!$product || !$product->is_type('simple') || !$product->is_purchasable() || !$product->is_in_stock() || $product->is_sold_individually()) {
-            return;
-        }
-
-        // Get API values or options
+    private function render_quantity_field($html, $product) {
         $api_value = Fns::get_options();
-
-        // Generate the WooCommerce quantity input field
         $qty_field = woocommerce_quantity_input(
             [
                 'min_value'   => 1,
@@ -105,35 +62,73 @@ class PublicAction {
             false
         );
 
-        // Generate custom HTML based on API options
-        $custom_file = '';
-
+        $custom_file = $html;
         if ($api_value['qtyLayout'] === 'layout1') {
             $custom_file  = '<div class="sc-quantity-wrapper wcqf-quantity-layout2">';
             $custom_file .= '<div class="quantity-buttons">';
-            $custom_file .= '<button type="button" class="qty-minus" onclick="changeQuantity(this, -1)">-</button>';
+            $custom_file .= '<button type="button" class="qty-minus">-</button>';
             $custom_file .= $qty_field;
-            $custom_file .= '<button type="button" class="qty-plus" onclick="changeQuantity(this, 1)">+</button>';
+            $custom_file .= '<button type="button" class="qty-plus">+</button>';
             $custom_file .= '</div>';
+            $custom_file .= $html;
             $custom_file .= '</div>';
         } else {
-            $custom_file  = '<div class="sc-quantity-wrapper wcqf-quanity-text">';
-            $custom_file .= $qty_field;
-            $custom_file .= '</div>';
+            $custom_file   = '<div class="sc-quantity-wrapper wcqf-quanity-text">';
+            $custom_file  .= $qty_field;
+            $custom_file  .= $html;
+            $custom_file  .= '</div>';
 
-            // Add quantity label if enabled
             $quantity_text = !empty($api_value['qtyText']) ? sanitize_text_field($api_value['qtyText']) : esc_html__('Quantity', 'wc-quantity-field');
-            $quantity_field = !empty($api_value['isShopShowQtyText']) && (int) $api_value['isShopShowQtyText'] === 1;
+            $quantity_field = !empty($api_value['isShopShowQtyText']) && (int)$api_value['isShopShowQtyText'] === 1;
 
             if ($quantity_field) {
                 $custom_file .= '<style>
                 .wcqf-quanity-text .quantity:before {
-                    content: "' . esc_html($quantity_text) . ':"; 
+                  content:"' . esc_html($quantity_text) . ':";
                 }
             </style>';
             }
         }
-        // Output the custom HTML
-        echo $custom_file;
+        return $custom_file;
     }
+
+    /**
+     * Add quantity field
+     *
+     * @param string $html
+     * @param WC_Product $product
+     * @return string
+     */
+    public function add_quantity_field($html, $product) {
+        $qty_field = woocommerce_quantity_input(
+            [
+                'min_value'   => 1,
+                'input_value' => 1,
+                'step'        => 1,
+                'max_value'   => $product->get_stock_quantity(),
+            ],
+            $product,
+            false
+        );
+        return $qty_field.$html;
+    }
+
+
+
+    /**
+     * Add quantity field for product single page
+     *
+     * @param string $html
+     * @param WC_Product $product
+     * @return string
+     */
+//    public function add_quantity_field_single_page() {
+//        global $product;
+//        if (!$product || !$product->is_type('simple') || !$product->is_purchasable() || !$product->is_in_stock() || $product->is_sold_individually()) {
+//            return;
+//        }
+//        $html = '';
+//        $html = $this->render_quantity_field($html, $product);
+//        echo $html;
+//    }
 }
