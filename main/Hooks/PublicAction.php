@@ -68,17 +68,18 @@ class PublicAction {
         if( is_product() && $quantity_single != 1 ){
             return ;
         }
-        if( $quantity_field ){ ?>
-            <div class="wcqf-quantity-text ">
-                <?php echo esc_html( $quantity_text );?>
+
+        if (!empty($quantity_text) && !(is_shop() && $quantity_field != 1) && !is_cart()) {
+            ?>
+            <div class="wcqf-quantity-text">
+                <?php echo esc_html($quantity_text); ?>
             </div>
-        <?php } ?>
-        <div class="wcqf-btn-wrapper">
+            <?php
+        } ?>
+        <div class="wcqf-btn-wrapper wcqf_stle_<?php echo esc_attr( $layout ); ?>">
         <?php if( $layout === 'layout1' ){ ?>
             <button type="button" class="qty-minus">-</button>
         <?php }
-
-
     }
 
     /**

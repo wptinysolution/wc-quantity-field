@@ -44,7 +44,10 @@ class PublicFilter {
         $api_value = Fns::get_options();
         $layout = !empty( $api_value['qtyLayout'] ) ? sanitize_text_field( $api_value['qtyLayout'] ) : '';
         $quantity_field = !empty($api_value['isShopShowQtyField']) && (int)$api_value['isShopShowQtyField'] === 1;
-        if( $quantity_field ) {
+        if ( empty( $quantity_field ) || !$product || !$product->is_type('simple') || !$product->is_purchasable() || !$product->is_in_stock() || $product->is_sold_individually()) {
+            return $html;
+        }
+        if( !empty( $quantity_field ) ) {
             $custom_file  = '<div class="wcqf-quantity-wrapper wcqf_'. esc_attr( $layout ) .'">';
             $custom_file .= woocommerce_quantity_input(
                 [
@@ -59,8 +62,6 @@ class PublicFilter {
             $custom_file .= $html;
             $custom_file  .= '</div>';
             return $custom_file;
-        }else{
-            return $html;
         }
 	}
 }
