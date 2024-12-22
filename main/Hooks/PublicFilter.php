@@ -9,6 +9,7 @@ namespace TinySolutions\wcqf\Hooks;
 
 use TinySolutions\wcqf\Common\Loader;
 use TinySolutions\wcqf\Traits\SingletonTrait;
+use TinySolutions\wcqf\Helpers\Fns;
 
 defined( 'ABSPATH' ) || exit();
 
@@ -40,20 +41,26 @@ class PublicFilter {
 	 * @return string
 	 */
 	public function add_quantity_field($html, $product) {
-		$custom_file  = '<div class="sc-quantity-wrapper wcqf-quantity-layout2">';
-		$custom_file .= woocommerce_quantity_input(
-			[
-				'min_value'   => 1,
-				'input_value' => 1,
-				'step'        => 1,
-				'max_value'   => $product->get_stock_quantity(),
-			],
-			$product,
-			false
-		);
-		$custom_file .= $html;
-		$custom_file  .= '</div>';
-		return $custom_file;
+        $api_value = Fns::get_options();
+        $layout = !empty( $api_value['qtyLayout'] ) ? sanitize_text_field( $api_value['qtyLayout'] ) : '';
+        $quantity_field = !empty($api_value['isShopShowQtyField']) && (int)$api_value['isShopShowQtyField'] === 1;
+        if( $quantity_field ) {
+            $custom_file  = '<div class="wcqf-quantity-wrapper wcqf_'. esc_attr( $layout ) .'">';
+            $custom_file .= woocommerce_quantity_input(
+                [
+                    'min_value'   => 1,
+                    'input_value' => 1,
+                    'step'        => 1,
+                    'max_value'   => $product->get_stock_quantity(),
+                ],
+                $product,
+                false
+            );
+            $custom_file .= $html;
+            $custom_file  .= '</div>';
+            return $custom_file;
+        }else{
+            return $html;
+        }
 	}
-	
 }

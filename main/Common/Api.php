@@ -146,12 +146,10 @@ class Api {
 		$the_settings['qtyLayout'] = sanitize_text_field($parameters['qtyLayout'] ?? '' );
 		$the_settings['isShopShowQtyText'] = boolval($parameters['isShopShowQtyText'] ?? false );
 		$the_settings['isShopShowQtyField'] = boolval($parameters['isShopShowQtyField'] ?? false );
-
 		$the_settings['isCheckoutShowQtyField'] = boolval($parameters['isCheckoutShowQtyField'] ?? false );
-
+		$the_settings['isProductShowQtyField'] = boolval($parameters['isProductShowQtyField'] ?? false );
 		$options = update_option( 'wcqf_settings', $the_settings );
 		$result['updated'] = boolval( $options );
-	
 		if ( $result['updated'] ) {
 			$result['message'] = esc_html__( 'Updated.', 'wc-quantity-field' );
 		}

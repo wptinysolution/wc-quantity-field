@@ -1,7 +1,7 @@
 (function($) {
     $(document).on("click", ".qty-minus, .qty-plus", function() {
         const button = $(this);
-        const input = button.closest(".quantity-buttons").find("input.qty");
+        const input = button.closest(".wcqf-btn-wrapper").find("input.qty");
         let currentValue = parseInt(input.val()) || 1;
         const min = parseInt(input.attr("min")) || 1;
         const max = parseInt(input.attr("max")) || Infinity;
@@ -22,6 +22,6 @@
         if (value < min) value = min;
         if (value > max) value = max;
         input.val(value);
-        input.closest(".sc-quantity-wrapper").find("[data-quantity]").attr("data-quantity", value);
+        input.closest(".wcqf-quantity-wrapper").find("[data-quantity]").attr("data-quantity", value);
     });
 })(jQuery);

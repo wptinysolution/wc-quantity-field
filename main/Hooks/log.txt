@@ -1,0 +1,26 @@
+Array
+(
+    [qtyText] => QnT
+    [qtyLayout] => default
+    [isShopShowQtyText] => 1
+    [isShopShowQtyField] => 1
+    [isCheckoutShowQtyField] => 1
+    [isProductShowQtyField] => 1
+)
+
+
+1
+
+Array
+(
+    [qtyText] => QnT
+    [qtyLayout] => default
+    [isShopShowQtyText] => 1
+    [isShopShowQtyField] => 1
+    [isCheckoutShowQtyField] => 1
+    [isProductShowQtyField] => 1
+)
+
+
+1
+
