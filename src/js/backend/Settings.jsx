@@ -43,8 +43,8 @@ function Settings() {
                             'default': 'Default',
                             'layout1': 'Layout 1',
                         }}
-                        value={ options?.qtyLayout || 'default'}
-                        onValueChange={(value) => onChangeField( "qtyLayout", value)}
+                        value={options?.qtyLayout || 'default'}
+                        onValueChange={(value) => onChangeField("qtyLayout", value)}
                     />
                     <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Shop Page</h4>
                     <SwitchField
@@ -69,6 +69,12 @@ function Settings() {
                         label="Display Quantity Field"
                         checked={options?.isProductShowQtyField}
                         onCheckedChange={(value) => onChangeField("isProductShowQtyField", value)}
+                    />
+                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Cart Page</h4>
+                    <SwitchField
+                        label="Display Quantity Field"
+                        checked={options?.isCartShowQtyField}
+                        onCheckedChange={(value) => onChangeField("isCartShowQtyField", value)}
                     />
                 </>
             }

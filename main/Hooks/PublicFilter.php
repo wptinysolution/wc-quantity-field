@@ -33,6 +33,7 @@ class PublicFilter {
 		$this->loader = Loader::instance();
 		$this->loader->add_filter( 'woocommerce_loop_add_to_cart_link', $this, 'add_quantity_field', 20, 2 );
 	}
+
 	/**
 	 * Add quantity field
 	 *

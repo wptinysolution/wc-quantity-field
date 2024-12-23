@@ -148,6 +148,7 @@ class Api {
 		$the_settings['isShopShowQtyField'] = boolval($parameters['isShopShowQtyField'] ?? false );
 		$the_settings['isCheckoutShowQtyField'] = boolval($parameters['isCheckoutShowQtyField'] ?? false );
 		$the_settings['isProductShowQtyField'] = boolval($parameters['isProductShowQtyField'] ?? false );
+		$the_settings['isCartShowQtyField'] = boolval($parameters['isCartShowQtyField'] ?? false );
 		$options = update_option( 'wcqf_settings', $the_settings );
 		$result['updated'] = boolval( $options );
 		if ( $result['updated'] ) {
