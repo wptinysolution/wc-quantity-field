@@ -52,17 +52,10 @@ function Settings() {
                         checked={options?.isShopShowQtyField}
                         onCheckedChange={(value) => onChangeField("isShopShowQtyField", value)}
                     />
-
                     <SwitchField
                         label="Display Quantity Text"
                         checked={options?.isShopShowQtyText}
                         onCheckedChange={(value) => onChangeField("isShopShowQtyText", value)}
-                    />
-                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Checkout Page</h4>
-                    <SwitchField
-                        label="Display Quantity Field"
-                        checked={options?.isCheckoutShowQtyField}
-                        onCheckedChange={(value) => onChangeField("isCheckoutShowQtyField", value)}
                     />
                     <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Product Page</h4>
                     <SwitchField
@@ -70,11 +63,22 @@ function Settings() {
                         checked={options?.isProductShowQtyField}
                         onCheckedChange={(value) => onChangeField("isProductShowQtyField", value)}
                     />
+                    <SwitchField
+                        label="Display Quantity Text"
+                        checked={options?.isProductShowQtyText}
+                        onCheckedChange={(value) => onChangeField("isProductShowQtyText", value)}
+                    />
                     <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Cart Page</h4>
                     <SwitchField
                         label="Display Quantity Field"
                         checked={options?.isCartShowQtyField}
                         onCheckedChange={(value) => onChangeField("isCartShowQtyField", value)}
+                    />
+                    <h4 className='border border-l-4 p-4 border-l-sky-500 font-bold text-base mb-4'>Checkout Page</h4>
+                    <SwitchField
+                        label="Display Quantity Field"
+                        checked={options?.isCheckoutShowQtyField}
+                        onCheckedChange={(value) => onChangeField("isCheckoutShowQtyField", value)}
                     />
                 </>
             }

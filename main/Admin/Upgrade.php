@@ -68,7 +68,7 @@ class Upgrade {
 					<?php
 					printf(
 						'%s%s.',
-						esc_html__( 'Heads up, Please backup before upgrade to version ', 'shopbuilder' ),
+						esc_html__( 'Heads up, Please backup before upgrade to version ', 'wc-quantity-field' ),
 						esc_html( $new_version )
 					);
 					?>

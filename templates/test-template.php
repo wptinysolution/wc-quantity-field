@@ -9,6 +9,6 @@
 ?>
 <p>
 	<?php
-	echo esc_html__( 'This is being loaded inside "wp_footer" from the templates class', 'extra-product-options' ) . ' ' . esc_html( $args['data']['text'] );
+	echo esc_html__( 'This is being loaded inside "wp_footer" from the templates class', 'wc-quantity-field' ) . ' ' . esc_html( $args['data']['text'] );
 	?>
 </p>

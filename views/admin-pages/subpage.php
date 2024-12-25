@@ -9,8 +9,8 @@
 ?>
 
 <div class="wrap">
-	<h1><?php echo esc_html__( 'Sub Page', 'extra-product-options' ); ?></h1>
+	<h1><?php echo esc_html__( 'Sub Page', 'wc-quantity-field' ); ?></h1>
 	<?php settings_errors(); ?>
 
-	<h2><?php echo esc_html__( 'My Plugin Boilerplate Sub Page', 'extra-product-options' ); ?></h2>
+	<h2><?php echo esc_html__( 'My Plugin Boilerplate Sub Page', 'wc-quantity-field' ); ?></h2>
 </div>

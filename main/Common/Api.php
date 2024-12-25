@@ -138,7 +138,7 @@ class Api {
 	 */
 	public function update_option( $request_data ) {
 		$result = [
-			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'textdomain' ),
+			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'wc-quantity-field' ),
 		];
 		$parameters = $request_data->get_params();
 		$the_settings = get_option( 'wcqf_settings', [] );
@@ -149,6 +149,7 @@ class Api {
 		$the_settings['isCheckoutShowQtyField'] = boolval($parameters['isCheckoutShowQtyField'] ?? false );
 		$the_settings['isProductShowQtyField'] = boolval($parameters['isProductShowQtyField'] ?? false );
 		$the_settings['isCartShowQtyField'] = boolval($parameters['isCartShowQtyField'] ?? false );
+		$the_settings['isProductShowQtyText'] = boolval($parameters['isProductShowQtyText'] ?? false );
 		$options = update_option( 'wcqf_settings', $the_settings );
 		$result['updated'] = boolval( $options );
 		if ( $result['updated'] ) {

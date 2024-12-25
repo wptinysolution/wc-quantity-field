@@ -138,7 +138,7 @@ class Assets {
 			[
 				'handle' => 'wcqf-frontend',
 				'src'    => wcqf()->get_assets_uri( 'js/frontend/frontend.js' ),
-				'deps'   => [],
+				'deps'   => ['jquery'],
 				'footer' => true,
 			],
 		];
@@ -158,5 +158,10 @@ class Assets {
 
 		// Enqueue the Script.
 		wp_enqueue_script( 'wcqf-frontend' );
+
+        wp_localize_script('wcqf-frontend', 'wcqf_checkout_params', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'update_order_review_nonce' => wp_create_nonce('wcqf_update_order_review_nonce'),
+        ]);
 	}
 }
