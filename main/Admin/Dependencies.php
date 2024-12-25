@@ -69,7 +69,7 @@ class Dependencies {
 	 */
 	public function check() {
 		if ( version_compare( PHP_VERSION, self::MINIMUM_PHP_VERSION, '<' ) ) {
-			$this->allOk             = false;
+			$this->allOk = false;
 			$this->is_php_compatible = false;
 		}
 		// $is_active = in_array( 'cpt-woo-integration/cpt-woo-integration.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ), true );
