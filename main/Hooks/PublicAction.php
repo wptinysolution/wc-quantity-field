@@ -108,7 +108,7 @@ class PublicAction {
 		}
 		if ( $layout === 'layout1' ) {
 			?>
-			<button type="button" class="qty-plus">+</button>
+			<button type="button" class="qty-plus" >+</button>
 		<?php } ?>
 		</div>
 		<?php
