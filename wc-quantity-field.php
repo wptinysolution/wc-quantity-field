@@ -1,12 +1,12 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Quantity Field For Woocommerce ( Masud )
- * Plugin URI:        https://wordpress.org/plugins/admin-notice-centralization
- * Description:       Boiler
- * Version:           0.0.2
+ * Plugin Name:       Quantity Field For Woocommerce
+ * Plugin URI:        https://github.com/wptinysolution/wc-quantity-field
+ * Description:       Display Quantity Field for Shop Page, Checkout Page, Product Page And Cart Page
+ * Version:           0.0.1
  * Author:            Tiny Solutions
- * Author URI:        https://www.wptinysolutions.com/
+ * Author URI:        https://github.com/wptinysolution/
  * Text Domain:       wc-quantity-field
  * Domain Path:       /languages
  * License:   GPLv3
