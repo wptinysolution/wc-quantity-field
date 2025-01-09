@@ -60,30 +60,6 @@ class AdminMenu {
 			'dashicons-screenoptions',
 			57
 		);
-		
-		add_submenu_page(
-			self::MENU_PAGE_SLUG,
-			esc_html__( 'Quantity Settings', 'wc-quantity-field' ),
-			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Quantity Settings', 'wc-quantity-field' ) . '</span>',
-			self::MENU_CAPABILITY,
-			self::MENU_PAGE_SLUG,
-		);
-		$menu_link_part = admin_url( 'admin.php?page=wcqf-admin' );
-
-		add_submenu_page(
-			self::MENU_PAGE_SLUG,
-			esc_html__( 'Useful Plugins', 'wc-quantity-field' ),
-			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Useful Plugins', 'wc-quantity-field' ) . '</span>',
-			self::MENU_CAPABILITY,
-			$menu_link_part . '#/plugins'
-		);
-		add_submenu_page(
-			self::MENU_PAGE_SLUG,
-			esc_html__( 'Contacts Support', 'wc-quantity-field' ),
-			'<span class="wcqf-is-submenu" ><span class="dashicons dashicons-arrow-right-alt" ></span>' . esc_html__( 'Contacts Support', 'wc-quantity-field' ) . '</span>',
-			self::MENU_CAPABILITY,
-			$menu_link_part . '#/support'
-		);
 	}
 
 	/**
